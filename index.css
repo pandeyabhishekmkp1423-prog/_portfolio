@@ -139,3 +139,99 @@ h6:hover {
   }
 
 }
+/* ===============================
+   GLOBAL SECTION SPACING CONTROL
+================================= */
+
+/* Normalize section spacing */
+section {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+/* Reduce spacing on mobile */
+@media (max-width: 768px) {
+  section {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+
+/* Remove weird margin collapses */
+section + section {
+  margin-top: 0 !important;
+}
+
+/* Remove accidental extra spacing */
+body {
+  overflow-x: hidden;
+}
+/* ===============================
+   MOBILE HOVER SIMULATION
+================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  /* Enable color styles permanently */
+  .group:hover,
+  .group {
+    transform: none !important;
+  }
+
+  /* Make hover color states active */
+  .group-hover\:text-white,
+  .group-hover\:text-white\/80,
+  .group-hover\:text-white\/75 {
+    color: rgba(255,255,255,0.9) !important;
+  }
+
+  .group-hover\:grayscale-0 {
+    filter: grayscale(0%) !important;
+  }
+
+  .group-hover\:opacity-100 {
+    opacity: 1 !important;
+  }
+
+  .group-hover\:translate-x-2 {
+    transform: translateX(0px) !important;
+  }
+
+}
+/* ===============================
+   HEADING MOBILE SCALE
+================================= */
+
+@media (max-width: 768px) {
+
+  h1 {
+    font-size: 2.8rem !important;
+    line-height: 1.1 !important;
+  }
+
+  h2 {
+    font-size: 2rem !important;
+  }
+
+  h3 {
+    font-size: 1.4rem !important;
+  }
+
+}
+section {
+  position: relative;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  width: 80%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+}
+
+section:last-of-type::after {
+  display: none;
+}

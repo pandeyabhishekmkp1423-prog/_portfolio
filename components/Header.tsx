@@ -18,11 +18,11 @@ const Header: React.FC = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "backdrop-blur-2xl bg-black/80 border-b border-white/10 h-16"
-          : "backdrop-blur-xl bg-black/60 border-b border-white/5 h-20"
+          ? "backdrop-blur-2xl bg-black/85 border-b border-white/10 h-14 md:h-16"
+          : "backdrop-blur-xl bg-black/70 border-b border-white/5 h-16 md:h-20"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-5 md:px-6 h-full flex items-center justify-between">
 
         {/* LOGO */}
         <motion.div
@@ -36,7 +36,7 @@ const Header: React.FC = () => {
               hover: { letterSpacing: "0.05em", y: -2 }
             }}
             transition={{ duration: 0.4 }}
-            className="block text-xl font-bold uppercase leading-none tracking-tight"
+            className="block text-lg md:text-xl font-bold uppercase leading-none tracking-tight"
           >
             Swapnil
           </motion.span>
@@ -47,48 +47,37 @@ const Header: React.FC = () => {
               hover: { letterSpacing: "0.4em", opacity: 1 }
             }}
             transition={{ duration: 0.4 }}
-            className="block text-xl font-light uppercase text-white/60 leading-none"
+            className="block text-lg md:text-xl font-light uppercase text-white/60 leading-none"
           >
             Pandey
           </motion.span>
 
-          {/* Underline animation */}
+          {/* Desktop underline */}
           <motion.div
             variants={{
               initial: { width: 0 },
               hover: { width: "100%" }
             }}
             transition={{ duration: 0.4 }}
-            className="absolute -bottom-1 left-0 h-[1px] bg-white/40"
+            className="absolute -bottom-1 left-0 h-[1px] bg-white/40 hidden md:block"
           />
+
+          {/* Mobile subtle glow underline */}
+          <div className="absolute -bottom-1 left-0 h-[1px] w-full bg-gradient-to-r from-blue-400/40 via-purple-400/40 to-pink-400/40 md:hidden" />
         </motion.div>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-10 text-sm font-medium tracking-widest uppercase text-white/70">
-          <a href="#about" className="relative group">
-            About
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#content" className="relative group">
-            Content
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#reels" className="relative group">
-            Reels
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#brands" className="relative group">
-            Brands
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
-          </a>
-          <a href="#contact" className="relative group">
-            Contact
-            <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
-          </a>
+        <nav className="hidden md:flex items-center space-x-8 text-sm font-medium tracking-widest uppercase text-white/70">
+          {["about", "content", "reels", "brands", "contact"].map((item) => (
+            <a key={item} href={`#${item}`} className="relative group">
+              {item}
+              <span className="absolute left-0 -bottom-1 w-0 h-px bg-white group-hover:w-full transition-all duration-300"></span>
+            </a>
+          ))}
         </nav>
 
         {/* Right Side */}
-        <div className="flex items-center space-x-5">
+        <div className="flex items-center space-x-3 md:space-x-5">
 
           {/* Instagram */}
           <a
@@ -99,18 +88,28 @@ const Header: React.FC = () => {
           >
             <Instagram
               size={20}
-              className="text-white/80 transition-all duration-300 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-pink-500 group-hover:via-purple-500 group-hover:to-orange-400 group-hover:bg-clip-text"
+              className="
+                transition-all duration-300
+                text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text
+                md:text-white/80 md:bg-none
+                md:group-hover:text-transparent md:group-hover:bg-gradient-to-r md:group-hover:from-pink-500 md:group-hover:via-purple-500 md:group-hover:to-orange-400 md:group-hover:bg-clip-text
+              "
             />
           </a>
 
-          {/* Gmail */}
+          {/* Mail */}
           <a
             href="mailto:pandeyswapnil426@gmail.com"
             className="group p-2 rounded-full border border-white/10 transition-all duration-300 hover:scale-110"
           >
             <Mail
               size={20}
-              className="text-white/80 transition-all duration-300 group-hover:text-red-500"
+              className="
+                transition-all duration-300
+                text-red-400
+                md:text-white/80
+                md:group-hover:text-red-500
+              "
             />
           </a>
 
@@ -128,18 +127,29 @@ const Header: React.FC = () => {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
             className="md:hidden bg-black border-t border-white/10"
           >
-            <div className="flex flex-col items-center py-8 space-y-6 uppercase tracking-widest text-white/70 text-sm">
-              <a href="#about" onClick={() => setOpen(false)}>About</a>
-              <a href="#content" onClick={() => setOpen(false)}>Content</a>
-              <a href="#reels" onClick={() => setOpen(false)}>Reels</a>
-              <a href="#brands" onClick={() => setOpen(false)}>Brands</a>
-              <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
+            <div className="flex flex-col items-center py-6 space-y-5 uppercase tracking-widest text-sm">
+
+              {["about", "content", "reels", "brands", "contact"].map((item) => (
+                <a
+                  key={item}
+                  href={`#${item}`}
+                  onClick={() => setOpen(false)}
+                  className="
+                    text-white/80
+                    bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400
+                    bg-clip-text text-transparent
+                  "
+                >
+                  {item}
+                </a>
+              ))}
+
             </div>
           </motion.div>
         )}

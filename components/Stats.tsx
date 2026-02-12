@@ -13,7 +13,11 @@ const StatNumber = ({ text }: { text: string }) => {
             textShadow: "0px 0px 25px rgba(255,255,255,0.6)",
           }}
           transition={{ type: "spring", stiffness: 400 }}
-          className="inline-block bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+          className="
+            inline-block
+            bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400
+            bg-clip-text text-transparent
+          "
         >
           {char}
         </motion.span>
@@ -24,26 +28,31 @@ const StatNumber = ({ text }: { text: string }) => {
 
 const Stats: React.FC = () => {
   return (
-    <section className="relative py-52 px-6 bg-black overflow-hidden">
+    <section className="relative py-28 md:py-40 px-6 bg-black overflow-hidden">
 
       {/* Background Energy Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-[900px] h-[600px] -translate-x-1/2 -translate-y-1/2 
-                        bg-gradient-radial from-purple-500/10 via-blue-500/5 to-transparent 
-                        blur-3xl opacity-50"></div>
+        <div className="
+          absolute top-1/2 left-1/2
+          w-[600px] md:w-[900px]
+          h-[400px] md:h-[600px]
+          -translate-x-1/2 -translate-y-1/2
+          bg-gradient-radial from-purple-500/15 via-blue-500/10 to-transparent
+          blur-3xl opacity-40
+        "></div>
       </div>
 
       <div className="max-w-6xl mx-auto relative z-10 text-center">
 
         {/* Header */}
-        <div className="mb-32">
-          <span className="text-white/25 uppercase tracking-[0.7em] text-xs font-semibold block mb-6">
+        <div className="mb-20 md:mb-28">
+          <span className="text-white/40 md:text-white/25 uppercase tracking-[0.6em] text-xs font-semibold block mb-4 md:mb-6">
             Performance
           </span>
 
-          <h2 className="text-6xl md:text-7xl font-semibold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl font-semibold tracking-tight">
             Influence in{" "}
-            <span className="italic font-light text-white/60">
+            <span className="italic font-light text-white/70 md:text-white/60">
               Motion
             </span>
           </h2>
@@ -51,21 +60,30 @@ const Stats: React.FC = () => {
 
         {/* MAIN HERO STAT */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
-          className="mb-40"
+          className="mb-24 md:mb-36"
         >
-          <div className="text-[12rem] md:text-[14rem] leading-none font-black tracking-tight">
+          <div className="text-[5rem] sm:text-[7rem] md:text-[12rem] leading-none font-black tracking-tight">
             <StatNumber text="1M+" />
           </div>
 
-          <div className="mt-6 text-sm uppercase tracking-[0.6em] text-white/40">
+          <div className="mt-4 md:mt-6 text-xs uppercase tracking-[0.5em] text-white/50">
             Followers
           </div>
 
-          <p className="mt-8 text-white/50 max-w-2xl mx-auto leading-relaxed text-lg hover:text-white/75 transition-colors duration-500">
+          <p className="
+            mt-6 md:mt-8
+            text-white/70 md:text-white/50
+            max-w-xl md:max-w-2xl
+            mx-auto
+            leading-relaxed
+            text-sm sm:text-base md:text-lg
+            transition-colors duration-500
+            md:hover:text-white/75
+          ">
             A culturally aligned community built on authenticity,
             storytelling, and high-impact collaborations across fashion,
             lifestyle, and travel.
@@ -73,7 +91,7 @@ const Stats: React.FC = () => {
         </motion.div>
 
         {/* SECONDARY STATS */}
-        <div className="grid md:grid-cols-3 gap-16">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-16">
 
           {[
             {
@@ -95,26 +113,44 @@ const Stats: React.FC = () => {
             <motion.div
               key={index}
               whileHover={{
-                y: -12,
+                y: -10,
                 boxShadow: "0px 40px 120px rgba(255,255,255,0.08)"
               }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="group relative p-12 rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl"
+              className="
+                group relative
+                p-8 md:p-12
+                rounded-3xl
+                border border-white/10
+                bg-white/[0.02]
+                backdrop-blur-xl
+              "
             >
-              <div className="text-6xl font-bold mb-6">
+              <div className="text-4xl md:text-6xl font-bold mb-5 md:mb-6">
                 <StatNumber text={stat.number} />
               </div>
 
-              <div className="text-xs uppercase tracking-[0.6em] text-white/40 mb-6">
+              <div className="text-xs uppercase tracking-[0.5em] text-white/50 mb-4 md:mb-6">
                 {stat.label}
               </div>
 
-              <p className="text-white/50 text-sm leading-relaxed group-hover:text-white/75 transition-colors duration-500">
+              <p className="
+                text-white/70 md:text-white/50
+                text-sm leading-relaxed
+                transition-colors duration-500
+                md:group-hover:text-white/75
+              ">
                 {stat.desc}
               </p>
 
               {/* Hover underline sweep */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 group-hover:w-full transition-all duration-700"></div>
+              <div className="
+                absolute bottom-0 left-0 h-[2px]
+                w-full md:w-0
+                bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400
+                md:group-hover:w-full
+                transition-all duration-700
+              "></div>
             </motion.div>
           ))}
 

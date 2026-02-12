@@ -30,36 +30,36 @@ const campaigns = [
 
 const FloatingGallery: React.FC = () => {
   return (
-    <section className="relative py-40 px-6 bg-black overflow-hidden">
+    <section className="relative py-24 md:py-36 px-6 bg-black overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
 
         {/* CENTERED HEADING */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.9 }}
-          className="text-center mb-32"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 md:mb-24"
         >
-          <span className="text-white/25 uppercase tracking-[0.7em] text-xs font-semibold block mb-8">
+          <span className="text-white/40 uppercase tracking-[0.6em] text-xs font-semibold block mb-6">
             Featured Work
           </span>
 
           <motion.h2
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200 }}
-            className="text-5xl md:text-7xl font-semibold tracking-tight leading-[1.05]"
+            className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]"
           >
             Campaign{" "}
-            <span className="italic font-light text-white/50">
+            <span className="italic font-light text-white/60">
               Highlights
             </span>
           </motion.h2>
         </motion.div>
 
         {/* CAMPAIGNS */}
-        <div className="space-y-48">
+        <div className="space-y-20 md:space-y-32">
 
           {campaigns.map((item, index) => {
             const reversed = index % 2 !== 0;
@@ -67,33 +67,47 @@ const FloatingGallery: React.FC = () => {
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 80 }}
+                initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 1 }}
-                className={`grid lg:grid-cols-2 gap-24 items-center ${
+                transition={{ duration: 0.9 }}
+                className={`grid lg:grid-cols-2 gap-10 md:gap-20 items-center ${
                   reversed ? "lg:grid-flow-dense" : ""
                 }`}
               >
 
                 {/* IMAGE */}
                 <motion.div
-                  whileHover={{ y: -12 }}
+                  whileHover={{ y: -10 }}
                   transition={{ type: "spring", stiffness: 180 }}
                   className={`relative group ${
                     reversed ? "lg:col-start-2" : ""
                   }`}
                 >
-                  <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-[0_80px_200px_rgba(0,0,0,0.95)]">
+                  <div className="
+                    relative rounded-3xl overflow-hidden
+                    border border-white/10
+                    shadow-[0_50px_150px_rgba(0,0,0,0.9)]
+                  ">
 
                     <img
                       src={item.image}
                       alt={item.title}
-                      className="w-full aspect-[4/5] object-cover transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                      className="
+                        w-full aspect-[4/5] object-cover
+                        transition-all duration-700
+                        group-hover:scale-105 group-hover:brightness-110
+                      "
                     />
 
-                    {/* Subtle ambient glow */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06),transparent_70%)]"></div>
+                    {/* Always subtle glow on mobile */}
+                    <div className="
+                      absolute inset-0
+                      bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]
+                      md:opacity-0 md:group-hover:opacity-100
+                      transition-opacity duration-500
+                    "></div>
+
                   </div>
                 </motion.div>
 
@@ -106,7 +120,7 @@ const FloatingGallery: React.FC = () => {
                   <motion.h3
                     whileHover={{ scale: 1.03 }}
                     transition={{ type: "spring", stiffness: 250 }}
-                    className="text-3xl md:text-4xl font-semibold mb-8 tracking-tight"
+                    className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-8 tracking-tight"
                   >
                     {item.title}
                   </motion.h3>
@@ -114,7 +128,7 @@ const FloatingGallery: React.FC = () => {
                   <motion.p
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
-                    className="text-white/60 text-lg leading-relaxed mb-10"
+                    className="text-white/70 md:text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-10"
                   >
                     {item.description}
                   </motion.p>
@@ -122,12 +136,13 @@ const FloatingGallery: React.FC = () => {
                   <motion.div
                     whileHover={{ letterSpacing: "0.15em" }}
                     transition={{ duration: 0.3 }}
-                    className="text-white/40 uppercase tracking-widest text-xs"
+                    className="text-white/50 uppercase tracking-[0.2em] md:tracking-widest text-xs"
                   >
                     {item.impact}
                   </motion.div>
 
-                  <div className="mt-10 h-[1px] w-0 bg-white/40 group-hover:w-full transition-all duration-700"></div>
+                  {/* Underline (active on desktop hover only) */}
+                  <div className="mt-8 h-[1px] w-12 md:w-0 bg-white/40 md:group-hover:w-full transition-all duration-700"></div>
                 </motion.div>
 
               </motion.div>

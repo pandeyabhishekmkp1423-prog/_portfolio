@@ -60,23 +60,26 @@ const About: React.FC = () => {
   };
 
   return (
-    <section id="about" className="relative py-48 px-6 bg-black overflow-hidden">
+    <section
+      id="about"
+      className="relative py-24 md:py-40 px-6 bg-black overflow-hidden"
+    >
       {/* Watermark */}
       <motion.div
         style={{ transform: `translateY(${offsetY}px)` }}
         className="absolute inset-0 pointer-events-none flex items-center justify-center"
       >
-        <span className="text-[15vw] font-black tracking-tight text-white/[0.025] select-none">
+        <span className="text-[18vw] md:text-[15vw] font-black tracking-tight text-white/[0.02] select-none">
           SWAPNIL
         </span>
       </motion.div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-32 items-center">
+        <div className="grid lg:grid-cols-12 gap-16 md:gap-24 items-center">
 
           {/* IMAGE SIDE */}
           <motion.div
-            initial={{ opacity: 0, y: 80 }}
+            initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1 }}
@@ -86,26 +89,25 @@ const About: React.FC = () => {
               ref={frameRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative aspect-[3/4] rounded-3xl overflow-hidden transition-transform duration-300 ease-out shadow-[0_70px_180px_rgba(0,0,0,0.95)]"
+              className="relative aspect-[3/4] rounded-3xl overflow-hidden transition-transform duration-300 ease-out shadow-[0_50px_120px_rgba(0,0,0,0.9)]"
             >
               <img
                 src="/images/about.jpg"
                 alt="Swapnil Pandey"
-                className="w-full h-full object-cover transition-all duration-1000 hover:scale-105 hover:brightness-110"
+                className="w-full h-full object-cover transition-all duration-1000 md:hover:scale-105 md:hover:brightness-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
             </div>
 
             {/* Quote Box */}
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="mt-10 bg-black border border-white/15 p-8 rounded-2xl backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.8)] relative"
+              className="mt-8 bg-black border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] relative"
             >
-              <div className="absolute top-0 left-0 h-[2px] w-0 bg-white/40 group-hover:w-full transition-all duration-500"></div>
-              <p className="text-sm italic text-white/70 leading-relaxed tracking-wide">
+              <p className="text-sm italic text-white/80 md:text-white/70 leading-relaxed tracking-wide">
                 “Influence isn’t about visibility. It’s about impact, emotion, and the stories that stay.”
               </p>
             </motion.div>
@@ -118,13 +120,13 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <span className="text-white/35 uppercase tracking-[0.6em] text-xs font-semibold block mb-12">
+            <span className="text-white/50 md:text-white/35 uppercase tracking-[0.5em] text-xs font-semibold block mb-6 md:mb-10">
               Meet Swapnil
             </span>
 
-            <h2 className="text-6xl md:text-7xl font-bold mb-16 leading-[1.05] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-10 md:mb-14 leading-[1.1] tracking-tight">
               Influence Built Through{" "}
-              <span className="italic font-light text-white/60">
+              <span className="italic font-light text-white/80 md:text-white/60">
                 Authentic Energy
               </span>
             </h2>
@@ -139,21 +141,25 @@ const About: React.FC = () => {
                 key={i}
                 custom={i}
                 variants={paragraphVariant}
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 250 }}
-                className="group relative max-w-2xl mb-8 cursor-default"
+                className="group relative max-w-2xl mb-6 md:mb-8 cursor-default"
               >
-                <p className="text-white/60 leading-relaxed text-lg transition-all duration-300 group-hover:text-white/85 group-hover:tracking-[0.02em]">
+                <p className="
+                  text-white/75 md:text-white/60 
+                  leading-relaxed text-base md:text-lg 
+                  transition-all duration-300
+                  md:group-hover:text-white/85
+                ">
                   {text}
                 </p>
 
-                {/* Animated underline */}
-                <div className="absolute bottom-0 left-0 h-[1px] w-0 bg-white/40 group-hover:w-full transition-all duration-500"></div>
+                <div className="absolute bottom-0 left-0 h-[1px] w-full md:w-0 bg-white/30 md:group-hover:w-full transition-all duration-500"></div>
               </motion.div>
             ))}
 
             {/* INFO GRID */}
-            <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
               {[
                 {
                   title: "Core Focus",
@@ -168,23 +174,28 @@ const About: React.FC = () => {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  whileHover={{ y: -8 }}
+                  whileHover={{ y: -6 }}
                   transition={{ type: "spring", stiffness: 280 }}
                   className="group relative"
                 >
-                  <div className="text-3xl font-bold text-white/20 mb-6">
+                  <div className="text-2xl md:text-3xl font-bold text-white/30 mb-4">
                     0{index + 1}
                   </div>
 
-                  <h4 className="text-white font-semibold uppercase tracking-[0.4em] text-xs mb-5">
+                  <h4 className="text-white uppercase tracking-[0.35em] text-xs mb-4">
                     {item.title}
                   </h4>
 
-                  <p className="text-white/40 text-sm leading-relaxed group-hover:text-white/75 transition-colors duration-300">
+                  <p className="
+                    text-white/70 md:text-white/40 
+                    text-sm leading-relaxed 
+                    md:group-hover:text-white/75
+                    transition-colors duration-300
+                  ">
                     {item.content}
                   </p>
 
-                  <div className="mt-6 h-[1px] w-0 bg-white/40 group-hover:w-full transition-all duration-500"></div>
+                  <div className="mt-4 h-[1px] w-full md:w-0 bg-white/30 md:group-hover:w-full transition-all duration-500"></div>
                 </motion.div>
               ))}
             </div>

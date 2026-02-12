@@ -21,62 +21,98 @@ const articles = [
 
 const Press: React.FC = () => {
   return (
-    <section className="relative py-32 px-6 bg-black overflow-hidden">
+    <section className="relative py-24 md:py-36 px-6 bg-black overflow-hidden">
 
-      {/* Background glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 blur-3xl opacity-40"></div>
+      {/* Soft Background Energy */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 w-[900px] h-[500px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-white/5 via-transparent to-transparent blur-3xl opacity-40"></div>
+      </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Header */}
-        <div className="text-center mb-20">
-          <span className="text-white/30 uppercase tracking-[0.4em] text-xs font-semibold block mb-4">
+        <div className="text-center mb-16 md:mb-24">
+          <span className="text-white/40 uppercase tracking-[0.6em] text-xs font-semibold block mb-6">
             Media Recognition
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-            Press & Features
+
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
+            Press{" "}
+            <span className="italic font-light text-white/60">
+              & Features
+            </span>
           </h2>
         </div>
 
         {/* Cards */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-8 md:gap-12 md:grid-cols-2 lg:grid-cols-3">
 
           {articles.map((item, idx) => (
             <motion.div
               key={idx}
-              whileHover={{ y: -12, scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 350, damping: 15 }}
-              className="group relative rounded-2xl p-10 bg-black border border-white/10 overflow-hidden"
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 250 }}
+              className="
+                group relative rounded-3xl p-8 md:p-10
+                bg-white/[0.02]
+                border border-white/10
+                backdrop-blur-xl
+                transition-all duration-500
+                hover:border-white/30
+              "
             >
 
-              {/* Animated Gradient Border */}
-              <div className="absolute inset-0 rounded-2xl p-[1px] bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                <div className="w-full h-full bg-black rounded-2xl"></div>
-              </div>
+              {/* Mobile always subtle glow */}
+              <div className="
+                absolute inset-0 rounded-3xl
+                bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5
+                md:opacity-0 md:group-hover:opacity-100
+                transition-opacity duration-500
+              "></div>
 
-              {/* Glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl blur-xl"></div>
-
-              {/* Content */}
+              {/* Big Quote Mark */}
               <div className="relative z-10">
-
-                {/* Big quote mark */}
-                <div className="text-[80px] leading-none text-white/10 mb-6">
+                <div className="text-[60px] md:text-[80px] leading-none text-white/10 mb-6 font-serif">
                   “
                 </div>
 
-                <blockquote className="text-lg md:text-xl leading-relaxed text-white/80 mb-10 group-hover:text-white transition-colors duration-200">
+                <blockquote className="
+                  text-base sm:text-lg md:text-xl
+                  leading-relaxed
+                  text-white/75 md:text-white/80
+                  mb-8
+                  transition-colors duration-300
+                  group-hover:text-white
+                ">
                   {item.quote}
                 </blockquote>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-10 h-px bg-white/20 group-hover:bg-white transition-colors duration-200"></div>
-                  <cite className="not-italic uppercase tracking-[0.3em] text-xs font-semibold text-white/40 group-hover:text-white transition-colors duration-200">
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-px bg-white/30"></div>
+
+                  <cite className="
+                    not-italic uppercase
+                    tracking-[0.25em]
+                    text-[10px] md:text-xs
+                    font-semibold
+                    text-white/50
+                    transition-colors duration-300
+                    group-hover:text-white
+                  ">
                     {item.source}
                   </cite>
                 </div>
-
               </div>
+
+              {/* Bottom subtle sweep line */}
+              <div className="
+                absolute bottom-0 left-0
+                h-[2px] w-12 md:w-0
+                bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400
+                md:group-hover:w-full
+                transition-all duration-700
+              "></div>
+
             </motion.div>
           ))}
 
