@@ -70,22 +70,28 @@ const Footer: React.FC = () => {
 
             <div className="flex items-center gap-5 md:gap-6">
 
-              {/* Instagram */}
+              {/* Instagram (FIXED PROPERLY) */}
               <a
                 href="https://www.instagram.com/swapnilpandeyg?igsh=MW92Nnk3dWgxbzVwYQ=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative p-3 rounded-2xl border border-white/10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:border-white/30"
               >
-                <span className="absolute inset-0 rounded-2xl opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 bg-gradient-to-r from-pink-500/20 via-purple-500/20 to-orange-400/20 blur-md"></span>
-
                 <Instagram
                   size={20}
+                  strokeWidth={2.2}
                   className="
-                    relative z-10 transition-all duration-300
-                    text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text
-                    md:text-white/50 md:bg-none
-                    md:group-hover:text-transparent md:group-hover:bg-gradient-to-r md:group-hover:from-pink-500 md:group-hover:via-purple-500 md:group-hover:to-orange-400 md:group-hover:bg-clip-text
+                    transition-all duration-300
+
+                    /* MOBILE – Always bright */
+                    text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]
+
+                    /* DESKTOP default */
+                    md:text-white/50 md:drop-shadow-none
+
+                    /* DESKTOP hover */
+                    md:group-hover:text-pink-500
+                    md:group-hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]
                   "
                 />
               </a>
@@ -95,12 +101,10 @@ const Footer: React.FC = () => {
                 href="#"
                 className="group relative p-3 rounded-2xl border border-white/10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:border-red-500/40"
               >
-                <span className="absolute inset-0 rounded-2xl opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 bg-red-500/20 blur-md"></span>
-
                 <Youtube
                   size={20}
                   className="
-                    relative z-10 transition-all duration-300
+                    transition-all duration-300
                     text-red-500
                     md:text-white/50
                     md:group-hover:text-red-500
@@ -113,12 +117,10 @@ const Footer: React.FC = () => {
                 href="#"
                 className="group relative p-3 rounded-2xl border border-white/10 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:border-blue-400/40"
               >
-                <span className="absolute inset-0 rounded-2xl opacity-40 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 bg-blue-400/20 blur-md"></span>
-
                 <Twitter
                   size={20}
                   className="
-                    relative z-10 transition-all duration-300
+                    transition-all duration-300
                     text-blue-400
                     md:text-white/50
                     md:group-hover:text-blue-400

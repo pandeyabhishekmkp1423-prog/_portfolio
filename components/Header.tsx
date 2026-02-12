@@ -79,20 +79,28 @@ const Header: React.FC = () => {
         {/* Right Side */}
         <div className="flex items-center space-x-3 md:space-x-5">
 
-          {/* Instagram */}
+          {/* Instagram (FIXED PROPERLY) */}
           <a
             href="https://www.instagram.com/swapnilpandeyg"
             target="_blank"
             rel="noopener noreferrer"
-            className="group p-2 rounded-full border border-white/10 transition-all duration-300 hover:scale-110"
+            className="group relative p-2 rounded-full border border-white/10 transition-all duration-300 hover:scale-110"
           >
             <Instagram
               size={20}
+              strokeWidth={2.2}
               className="
                 transition-all duration-300
-                text-transparent bg-gradient-to-r from-pink-500 via-purple-500 to-orange-400 bg-clip-text
-                md:text-white/80 md:bg-none
-                md:group-hover:text-transparent md:group-hover:bg-gradient-to-r md:group-hover:from-pink-500 md:group-hover:via-purple-500 md:group-hover:to-orange-400 md:group-hover:bg-clip-text
+
+                /* MOBILE – Always bright */
+                text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]
+
+                /* DESKTOP default */
+                md:text-white/80 md:drop-shadow-none
+
+                /* DESKTOP hover */
+                md:group-hover:text-pink-500
+                md:group-hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]
               "
             />
           </a>
@@ -134,22 +142,16 @@ const Header: React.FC = () => {
             className="md:hidden bg-black border-t border-white/10"
           >
             <div className="flex flex-col items-center py-6 space-y-5 uppercase tracking-widest text-sm">
-
               {["about", "content", "reels", "brands", "contact"].map((item) => (
                 <a
                   key={item}
                   href={`#${item}`}
                   onClick={() => setOpen(false)}
-                  className="
-                    text-white/80
-                    bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400
-                    bg-clip-text text-transparent
-                  "
+                  className="text-pink-400"
                 >
                   {item}
                 </a>
               ))}
-
             </div>
           </motion.div>
         )}
