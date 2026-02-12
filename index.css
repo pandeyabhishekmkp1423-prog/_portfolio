@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------- GLOBAL INTERACTIVE SYSTEM ---------------- */
+
+/* Smooth rendering */
+* {
+  transition: transform 0.25s ease,
+              color 0.25s ease,
+              filter 0.25s ease;
+}
+
+/* Only apply interaction to text & inline elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button,
+span,
+svg {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* Subtle smooth zoom */
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover,
+p:hover,
+a:hover,
+button:hover,
+span:hover,
+svg:hover {
+  transform: scale(1.04);
+}
+
+/* Smooth gradient color only for text */
+h1:hover,
+h2:hover,
+h3:hover,
+h4:hover,
+h5:hover,
+h6:hover,
+p:hover,
+a:hover,
+button:hover,
+span:hover {
+  background: linear-gradient(
+    90deg,
+    #60a5fa,
+    #a78bfa,
+    #ec4899
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Icons subtle brighten */
+svg:hover {
+  filter: brightness(1.4);
+}
+
+/* Images only slight brightness, no scale */
+img {
+  transition: filter 0.3s ease;
+}
+
+img:hover {
+  filter: brightness(1.15);
+}
+@keyframes shine {
+  0% { transform: translateX(-100%) rotate(12deg); }
+  100% { transform: translateX(100%) rotate(12deg); }
+}
