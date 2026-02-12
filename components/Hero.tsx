@@ -32,28 +32,30 @@ const Hero: React.FC = () => {
           </p>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-10 mb-14">
-            <div>
-              <div className="text-3xl md:text-4xl font-bold">1M+</div>
-              <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 mt-2">
-                Followers
-              </div>
-            </div>
+          {/* Stats */}
+<div className="grid grid-cols-3 gap-10 mb-14">
 
-            <div>
-              <div className="text-3xl md:text-4xl font-bold">5%+</div>
-              <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 mt-2">
-                Engagement
-              </div>
-            </div>
+  {[
+    { value: "1M+", label: "Followers" },
+    { value: "5%+", label: "Engagement" },
+    { value: "200K+", label: "Avg Reel Views" },
+  ].map((stat, index) => (
+    <div
+      key={index}
+      className="group cursor-pointer transition-all duration-500 hover:-translate-y-2"
+    >
+      <div className="text-3xl md:text-4xl font-bold transition-all duration-500 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:via-white group-hover:to-white/60 group-hover:bg-clip-text">
+        {stat.value}
+      </div>
 
-            <div>
-              <div className="text-3xl md:text-4xl font-bold">200K+</div>
-              <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 mt-2">
-                Avg Reel Views
-              </div>
-            </div>
-          </div>
+      <div className="text-[11px] uppercase tracking-[0.3em] text-white/40 mt-2 transition-colors duration-500 group-hover:text-white/80">
+        {stat.label}
+      </div>
+    </div>
+  ))}
+
+</div>
+
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">

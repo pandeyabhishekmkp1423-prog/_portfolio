@@ -96,3 +96,46 @@ h6:hover {
   transform: scale(1.08);
   letter-spacing: 0.05em;
 }
+/* ========================================= */
+/* FORCE HOVER STYLES ON TOUCH DEVICES */
+/* ========================================= */
+
+@media (hover: none) {
+
+  /* Force gradient text */
+  .group-hover\:text-transparent {
+    color: transparent !important;
+  }
+
+  .group-hover\:bg-clip-text {
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+  }
+
+  .group-hover\:from-pink-500,
+  .group-hover\:via-purple-500,
+  .group-hover\:to-orange-400 {
+    background-image: linear-gradient(
+      to right,
+      #ec4899,
+      #a855f7,
+      #fb923c
+    ) !important;
+  }
+
+  /* Remove grayscale on mobile */
+  .group-hover\:grayscale-0 {
+    filter: grayscale(0) !important;
+  }
+
+  /* Always show hover opacity elements */
+  .group-hover\:opacity-100 {
+    opacity: 1 !important;
+  }
+
+  /* Always expand hover underline */
+  .group-hover\:w-full {
+    width: 100% !important;
+  }
+
+}

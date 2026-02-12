@@ -32,13 +32,13 @@ const collectionData = [
 ];
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 60 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
     transition: {
       delay: i * 0.15,
-      duration: 0.8,
+      duration: 0.9,
       ease: [0.16, 1, 0.3, 1]
     }
   })
@@ -46,27 +46,27 @@ const cardVariants = {
 
 const Collections: React.FC = () => {
   return (
-    <section id="content" className="relative py-32 px-6 bg-[#0c0c0c] overflow-hidden">
+    <section id="content" className="relative py-44 px-6 bg-black overflow-hidden">
+
       <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-          <div>
-            <span className="text-white/30 uppercase tracking-[0.4em] text-xs font-semibold block mb-4">
-              Content Strategy
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-white/60 bg-clip-text text-transparent">
-              Content Pillars
-            </h2>
-          </div>
+        <div className="text-center mb-32">
+          <span className="text-white/25 uppercase tracking-[0.6em] text-xs font-semibold block mb-6">
+            Content Strategy
+          </span>
 
-          <p className="text-white/40 max-w-sm text-sm leading-relaxed">
-            A structured content ecosystem designed to balance aspirational storytelling with high engagement relatability.
-          </p>
+          <h2 className="text-5xl md:text-6xl font-semibold tracking-tight">
+            Content{" "}
+            <span className="italic font-light text-white/50">
+              Pillars
+            </span>
+          </h2>
         </div>
 
         {/* GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16">
+
           {collectionData.map((item, idx) => {
             const cardRef = useRef<HTMLAnchorElement>(null);
 
@@ -81,15 +81,15 @@ const Collections: React.FC = () => {
               const centerX = rect.width / 2;
               const centerY = rect.height / 2;
 
-              const rotateX = -(y - centerY) / 25;
-              const rotateY = (x - centerX) / 25;
+              const rotateX = -(y - centerY) / 30;
+              const rotateY = (x - centerX) / 30;
 
               card.style.transform = `
-                perspective(1000px)
+                perspective(1500px)
                 rotateX(${rotateX}deg)
                 rotateY(${rotateY}deg)
-                translateY(-6px)
-                scale(1.05)
+                translateY(-14px)
+                scale(1.04)
               `;
             };
 
@@ -98,7 +98,7 @@ const Collections: React.FC = () => {
               if (!card) return;
 
               card.style.transform = `
-                perspective(1000px)
+                perspective(1500px)
                 rotateX(0deg)
                 rotateY(0deg)
                 translateY(0px)
@@ -117,57 +117,63 @@ const Collections: React.FC = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={cardVariants}
-                animate={{
-                  y: [0, -8, 0],
-                }}
+                animate={{ y: [0, -10, 0] }}
                 transition={{
-                  duration: 5 + idx,
+                  duration: 7 + idx,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="group relative rounded-2xl overflow-hidden bg-white/[0.03] border border-white/10 transition-all duration-500 cursor-pointer shadow-lg hover:shadow-white/10"
+                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-black transition-all duration-500 cursor-pointer shadow-[0_60px_180px_rgba(0,0,0,0.95)] hover:border-white/30"
               >
-                <div className="aspect-[4/5] relative overflow-hidden">
 
+                {/* IMAGE */}
+                <div className="relative overflow-hidden">
                   <img
                     src={item.img}
                     alt={item.title}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 opacity-70 group-hover:opacity-100"
+                    className="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   />
 
-                  {/* Cinematic Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                  {/* Soft bottom fade */}
+                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
 
-                  {/* Hover Glow */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.15),transparent_70%)]"></div>
+                  {/* Reflective sweep */}
+                  <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                    <div className="absolute -left-1/2 top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-12 translate-x-[-200%] group-hover:translate-x-[300%] transition-all duration-1000"></div>
+                  </div>
                 </div>
 
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                {/* CONTENT */}
+                <div className="p-8 pt-6">
 
-                  <div className="mb-4 text-white p-3 bg-white/10 backdrop-blur-md inline-flex items-center justify-center w-fit rounded-xl border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
+                  <div className="mb-5 text-white p-3 bg-white/10 backdrop-blur-md inline-flex items-center justify-center w-fit rounded-xl border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
                     {item.icon}
                   </div>
 
-                  <h3 className="text-2xl font-bold mb-3 tracking-tight group-hover:translate-x-2 transition-transform duration-500">
+                  <h3 className="text-2xl font-semibold mb-4 tracking-tight transition-all duration-500 group-hover:translate-x-2">
                     {item.title}
                   </h3>
 
-                  <p className="text-white/60 text-sm leading-relaxed opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  <p className="text-white/50 text-sm leading-relaxed transition-all duration-500 group-hover:text-white/80">
                     {item.desc}
                   </p>
 
-                  <div className="mt-6 h-px w-0 bg-white/40 group-hover:w-12 transition-all duration-500"></div>
-
                 </div>
+
               </motion.a>
             );
           })}
+
         </div>
 
       </div>
+
+      {/* Ambient center glow */}
+      <div className="absolute top-1/2 left-1/2 w-[1000px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-white/[0.03] blur-3xl opacity-20 pointer-events-none"></div>
+
     </section>
   );
 };

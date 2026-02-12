@@ -9,7 +9,8 @@ import Brands from "./components/Brands";
 import Press from "./components/Press";
 import ContactCTA from "./components/ContactCTA";
 import Footer from "./components/Footer";
-
+import FloatingGallery from "./components/FloatingGallery";
+import Reels from "./components/Reels";
 const App: React.FC = () => {
   const appRef = useRef<HTMLDivElement>(null);
 
@@ -33,8 +34,10 @@ const App: React.FC = () => {
       <Header />
       <Hero />
       <About />
+      <Reels/>
       <Stats />
       <Audience />
+      <FloatingGallery />
       <Collections />
       <Brands />
       <Press />

@@ -12,72 +12,113 @@ const brands = [
   },
   {
     name: "Amazon Fashion",
-    logo: "https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png",
+    logo: "https://freelogopng.com/images/all_img/1688361055amazon-logo-png.png",
   },
   {
     name: "MG Hector",
-    logo: "https://www.carlogos.org/logo/MG-logo-red-2010-1920x1080.png",
+    logo: "https://logo-teka.com/wp-content/uploads/2025/07/mg-motor-logo.png",
   },
   {
     name: "Hero MotoCorp",
     logo: "https://upload.wikimedia.org/wikipedia/commons/e/e2/Hero_MotoCorp_Logo.svg",
   },
+  {
+    name: "Spencers",
+    logo: "https://companieslogo.com/img/orig/SPENCERS.NS_BIG-9b99c75c.png?t=1720244494",
+  },
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 const Brands: React.FC = () => {
   return (
-    <section id="brands" className="relative py-32 px-6 bg-black overflow-hidden">
-
-      {/* Animated background glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 blur-3xl opacity-40"></div>
+    <section
+      id="brands"
+      className="relative py-40 px-6 bg-black overflow-hidden border-t border-white/5"
+    >
+      {/* Ambient Depth Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 w-[1000px] h-[700px] -translate-x-1/2 -translate-y-1/2 bg-white/[0.04] rounded-full blur-[160px]" />
+      </div>
 
       <div className="max-w-7xl mx-auto text-center relative z-10">
 
-        <span className="text-white/30 uppercase tracking-[0.4em] text-xs font-semibold block mb-6">
+        {/* Section Label */}
+        <span className="text-white/25 uppercase tracking-[0.6em] text-xs font-semibold block mb-8">
           Brand Collaborations
         </span>
 
-        <h2 className="text-4xl md:text-5xl font-bold mb-20">
-          Brands That Trust Swapnil
+        {/* Heading */}
+        <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-20 leading-[1.1]">
+          Brands That Trust{" "}
+          <span className="italic font-light text-white/50">
+            Swapnil
+          </span>
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10">
-
+        {/* Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-3 gap-12"
+        >
           {brands.map((brand, idx) => (
             <motion.div
               key={idx}
-              whileHover={{
-                scale: 1.12,
-                y: -10,
-                rotateX: 6,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 15,
-              }}
-              className="relative group perspective"
+              variants={cardVariants}
+              whileHover={{ y: -10 }}
+              className="group relative rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-12 transition-all duration-500 hover:border-white/30 hover:bg-white/[0.06] hover:shadow-[0_20px_60px_rgba(255,255,255,0.06)]"
             >
-              {/* Gradient Border Animation */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200 blur-[2px]"></div>
+              {/* Soft Inner Shadow Layer */}
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/5 pointer-events-none" />
 
-              <div className="relative flex items-center justify-center p-10 bg-black border border-white/10 rounded-2xl transition-all duration-200 group-hover:border-transparent">
-
-                {/* Logo */}
+              {/* Logo */}
+              <div className="flex items-center justify-center h-24">
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-14 object-contain grayscale group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-200"
+                  className="max-h-14 object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                 />
-
               </div>
+
+              {/* Brand Name */}
+              <p className="mt-8 text-xs tracking-[0.3em] uppercase text-white/35 group-hover:text-white/70 transition-colors duration-300">
+                {brand.name}
+              </p>
             </motion.div>
           ))}
+        </motion.div>
 
-        </div>
-
-        <p className="mt-20 text-white/30 text-sm italic tracking-wide max-w-2xl mx-auto">
-          50+ high-impact collaborations blending creativity, influence, and measurable performance.
+        {/* Statement */}
+        <p className="mt-28 text-white/40 text-lg leading-relaxed max-w-3xl mx-auto">
+          Over{" "}
+          <span className="text-white font-semibold">
+            50+ high-impact collaborations
+          </span>{" "}
+          spanning fashion, lifestyle, automotive, and retail —
+          delivering campaigns built on authenticity, performance,
+          and meaningful audience engagement.
         </p>
 
       </div>
