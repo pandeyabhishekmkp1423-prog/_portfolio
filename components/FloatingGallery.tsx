@@ -30,7 +30,7 @@ const campaigns = [
 
 const FloatingGallery: React.FC = () => {
   return (
-    <section className="relative py-24 md:py-36 px-6 bg-black overflow-hidden">
+    <section className="relative py-24 md:py-36 px-6 overflow-hidden">
 
       <div className="max-w-6xl mx-auto">
 
@@ -87,7 +87,7 @@ const FloatingGallery: React.FC = () => {
                   <div className="
                     relative rounded-3xl overflow-hidden
                     border border-white/10
-                    shadow-[0_50px_150px_rgba(0,0,0,0.9)]
+                    shadow-[0_50px_120px_rgba(0,0,0,0.6)]
                   ">
 
                     <img
@@ -100,7 +100,7 @@ const FloatingGallery: React.FC = () => {
                       "
                     />
 
-                    {/* Always subtle glow on mobile */}
+                    {/* Softer glow */}
                     <div className="
                       absolute inset-0
                       bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]
@@ -141,7 +141,7 @@ const FloatingGallery: React.FC = () => {
                     {item.impact}
                   </motion.div>
 
-                  {/* Underline (active on desktop hover only) */}
+                  {/* Underline */}
                   <div className="mt-8 h-[1px] w-12 md:w-0 bg-white/40 md:group-hover:w-full transition-all duration-700"></div>
                 </motion.div>
 

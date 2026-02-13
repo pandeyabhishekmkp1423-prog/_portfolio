@@ -3,7 +3,7 @@ import { Instagram, Youtube, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative bg-black pt-16 md:pt-20 pb-8 md:pb-10 px-6 border-t border-white/10 overflow-hidden">
+    <footer className="relative pt-16 md:pt-20 pb-8 md:pb-10 px-6 border-t border-white/10 overflow-hidden">
 
       {/* Subtle radial glow background */}
       <div className="absolute inset-0 pointer-events-none">
@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
         {/* MAIN GRID */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-16 mb-16 md:mb-20">
 
-          {/* ================= BRAND (UNCHANGED) ================= */}
+          {/* ================= BRAND ================= */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex flex-col mb-6">
               <span className="text-2xl font-bold tracking-tighter uppercase leading-none">
@@ -70,7 +70,7 @@ const Footer: React.FC = () => {
 
             <div className="flex items-center gap-5 md:gap-6">
 
-              {/* Instagram (FIXED PROPERLY) */}
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/swapnilpandeyg?igsh=MW92Nnk3dWgxbzVwYQ=="
                 target="_blank"
@@ -82,14 +82,8 @@ const Footer: React.FC = () => {
                   strokeWidth={2.2}
                   className="
                     transition-all duration-300
-
-                    /* MOBILE – Always bright */
                     text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]
-
-                    /* DESKTOP default */
                     md:text-white/50 md:drop-shadow-none
-
-                    /* DESKTOP hover */
                     md:group-hover:text-pink-500
                     md:group-hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]
                   "

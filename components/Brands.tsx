@@ -53,7 +53,7 @@ const Brands: React.FC = () => {
   return (
     <section
       id="brands"
-      className="relative py-40 px-6 bg-black overflow-hidden border-t border-white/5"
+      className="relative py-40 px-6 overflow-hidden border-t border-white/5"
     >
       {/* Ambient Depth Glow */}
       <div className="absolute inset-0 pointer-events-none">

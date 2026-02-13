@@ -18,9 +18,7 @@ const Interactive: React.FC<Props> = ({ children, className = "" }) => {
     >
       <div
         className={`${className} transition-all duration-300 ${
-          hovered
-            ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400"
-            : ""
+          hovered ? "brand-gradient" : ""
         }`}
       >
         {children}

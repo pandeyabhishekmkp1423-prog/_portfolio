@@ -16,10 +16,15 @@ const Header: React.FC = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      style={{
+        background: scrolled
+          ? "color-mix(in srgb, var(--bg-main) 85%, black)"
+          : "color-mix(in srgb, var(--bg-main) 70%, transparent)"
+      }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 backdrop-blur-2xl border-b h-16 md:h-20 ${
         scrolled
-          ? "backdrop-blur-2xl bg-black/85 border-b border-white/10 h-14 md:h-16"
-          : "backdrop-blur-xl bg-black/70 border-b border-white/5 h-16 md:h-20"
+          ? "border-white/10 md:h-16"
+          : "border-white/5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-5 md:px-6 h-full flex items-center justify-between">
@@ -52,7 +57,6 @@ const Header: React.FC = () => {
             Pandey
           </motion.span>
 
-          {/* Desktop underline */}
           <motion.div
             variants={{
               initial: { width: 0 },
@@ -62,7 +66,6 @@ const Header: React.FC = () => {
             className="absolute -bottom-1 left-0 h-[1px] bg-white/40 hidden md:block"
           />
 
-          {/* Mobile subtle glow underline */}
           <div className="absolute -bottom-1 left-0 h-[1px] w-full bg-gradient-to-r from-blue-400/40 via-purple-400/40 to-pink-400/40 md:hidden" />
         </motion.div>
 
@@ -79,7 +82,6 @@ const Header: React.FC = () => {
         {/* Right Side */}
         <div className="flex items-center space-x-3 md:space-x-5">
 
-          {/* Instagram (FIXED PROPERLY) */}
           <a
             href="https://www.instagram.com/swapnilpandeyg"
             target="_blank"
@@ -91,21 +93,14 @@ const Header: React.FC = () => {
               strokeWidth={2.2}
               className="
                 transition-all duration-300
-
-                /* MOBILE – Always bright */
                 text-pink-400 drop-shadow-[0_0_8px_rgba(236,72,153,0.6)]
-
-                /* DESKTOP default */
                 md:text-white/80 md:drop-shadow-none
-
-                /* DESKTOP hover */
                 md:group-hover:text-pink-500
                 md:group-hover:drop-shadow-[0_0_10px_rgba(236,72,153,0.8)]
               "
             />
           </a>
 
-          {/* Mail */}
           <a
             href="mailto:pandeyswapnil426@gmail.com"
             className="group p-2 rounded-full border border-white/10 transition-all duration-300 hover:scale-110"
@@ -121,7 +116,6 @@ const Header: React.FC = () => {
             />
           </a>
 
-          {/* Mobile Toggle */}
           <button
             className="md:hidden p-2 rounded-lg border border-white/10"
             onClick={() => setOpen(!open)}
@@ -131,7 +125,6 @@ const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -139,7 +132,10 @@ const Header: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.25 }}
-            className="md:hidden bg-black border-t border-white/10"
+            style={{
+              background: "color-mix(in srgb, var(--bg-main) 85%, black)"
+            }}
+            className="md:hidden border-t border-white/10 backdrop-blur-xl"
           >
             <div className="flex flex-col items-center py-6 space-y-5 uppercase tracking-widest text-sm">
               {["about", "content", "reels", "brands", "contact"].map((item) => (

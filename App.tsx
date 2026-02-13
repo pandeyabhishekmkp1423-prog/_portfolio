@@ -11,6 +11,9 @@ import ContactCTA from "./components/ContactCTA";
 import Footer from "./components/Footer";
 import FloatingGallery from "./components/FloatingGallery";
 import Reels from "./components/Reels";
+import ThemeLab from "./components/ThemeLab";
+
+
 const App: React.FC = () => {
   const appRef = useRef<HTMLDivElement>(null);
 
@@ -29,12 +32,13 @@ const App: React.FC = () => {
     <div
       ref={appRef}
       onMouseMove={handleMouseMove}
-      className="global-spotlight relative bg-black text-white min-h-screen"
+      className="global-spotlight relative text-white min-h-screen"
     >
+      <ThemeLab />
       <Header />
       <Hero />
       <About />
-      <Reels/>
+      <Reels />
       <Stats />
       <Audience />
       <FloatingGallery />

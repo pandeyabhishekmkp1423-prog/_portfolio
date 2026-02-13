@@ -21,7 +21,7 @@ const articles = [
 
 const Press: React.FC = () => {
   return (
-    <section className="relative py-24 md:py-36 px-6 bg-black overflow-hidden">
+    <section className="relative py-24 md:py-36 px-6 overflow-hidden">
 
       {/* Soft Background Energy */}
       <div className="absolute inset-0 pointer-events-none">
@@ -62,7 +62,7 @@ const Press: React.FC = () => {
               "
             >
 
-              {/* Mobile always subtle glow */}
+              {/* Mobile subtle glow */}
               <div className="
                 absolute inset-0 rounded-3xl
                 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5
@@ -104,7 +104,7 @@ const Press: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom subtle sweep line */}
+              {/* Bottom sweep line */}
               <div className="
                 absolute bottom-0 left-0
                 h-[2px] w-12 md:w-0

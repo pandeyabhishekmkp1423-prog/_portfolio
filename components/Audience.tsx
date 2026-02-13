@@ -46,7 +46,7 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       transition-opacity
     "></div>
 
-    {/* Subtle inner glow (always visible on mobile) */}
+    {/* Subtle inner glow */}
     <div className="
       absolute inset-0
       bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10
@@ -60,7 +60,7 @@ const Card: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 const Audience: React.FC = () => {
   return (
-    <section id="audience" className="py-24 md:py-32 px-6 bg-black">
+    <section id="audience" className="py-24 md:py-32 px-6">
 
       {/* Header */}
       <div className="max-w-7xl mx-auto text-center mb-16 md:mb-24">

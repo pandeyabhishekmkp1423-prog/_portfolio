@@ -6,7 +6,7 @@ const ContactCTA: React.FC = () => {
   return (
     <section
       id="contact"
-      className="relative py-40 px-6 bg-black overflow-hidden border-t border-white/5"
+      className="relative py-40 px-6 overflow-hidden border-t border-white/5"
     >
       {/* Ambient Background Glow */}
       <div className="absolute inset-0 pointer-events-none">

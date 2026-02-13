@@ -62,7 +62,7 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-40 px-6 bg-black overflow-hidden"
+      className="relative py-24 md:py-40 px-6 overflow-hidden"
     >
       {/* Watermark */}
       <motion.div
@@ -96,7 +96,9 @@ const About: React.FC = () => {
                 alt="Swapnil Pandey"
                 className="w-full h-full object-cover transition-all duration-1000 md:hover:scale-105 md:hover:brightness-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+
+              {/* Softer overlay (theme compatible) */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
             </div>
 
             {/* Quote Box */}
@@ -105,7 +107,7 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="mt-8 bg-black border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] relative"
+              className="mt-8 bg-black/60 border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] relative"
             >
               <p className="text-sm italic text-white/80 md:text-white/70 leading-relaxed tracking-wide">
                 “Influence isn’t about visibility. It’s about impact, emotion, and the stories that stay.”

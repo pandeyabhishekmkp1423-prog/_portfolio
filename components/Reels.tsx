@@ -31,7 +31,7 @@ const reelData = [
 
 const Reels: React.FC = () => {
   return (
-    <section id="reels" className="relative py-20 md:py-28 px-6 bg-black">
+    <section id="reels" className="relative py-20 md:py-28 px-6">
 
       {/* HEADER */}
       <div className="max-w-3xl mx-auto text-center mb-14 md:mb-20">
@@ -103,9 +103,10 @@ const Reels: React.FC = () => {
                 "
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+              {/* Softer overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
 
-              {/* Glow (always visible on mobile) */}
+              {/* Glow */}
               <div className="
                 absolute inset-0
                 opacity-40 md:opacity-0

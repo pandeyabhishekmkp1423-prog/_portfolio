@@ -28,7 +28,7 @@ const StatNumber = ({ text }: { text: string }) => {
 
 const Stats: React.FC = () => {
   return (
-    <section className="relative py-28 md:py-40 px-6 bg-black overflow-hidden">
+    <section className="relative py-28 md:py-40 px-6 overflow-hidden">
 
       {/* Background Energy Glow */}
       <div className="absolute inset-0 pointer-events-none">
@@ -37,7 +37,7 @@ const Stats: React.FC = () => {
           w-[600px] md:w-[900px]
           h-[400px] md:h-[600px]
           -translate-x-1/2 -translate-y-1/2
-          bg-gradient-radial from-purple-500/15 via-blue-500/10 to-transparent
+          bg-gradient-radial from-purple-500/12 via-blue-500/8 to-transparent
           blur-3xl opacity-40
         "></div>
       </div>

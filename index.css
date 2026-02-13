@@ -2,47 +2,227 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ---------------- GLOBAL INTERACTIVE SYSTEM ---------------- */
+/* ======================================================
+   🎛 ADVANCED CLIENT THEME CONTROL PANEL
+   👉 Edit ONLY inside :root
+   👉 Comment / Uncomment ONE option per category
+   👉 All HEX values clearly written for client preview
+   👉 Includes Black / White mode
+====================================================== */
 
-/* Smooth rendering */
-* {
-  transition: transform 0.25s ease,
-              color 0.25s ease,
-              filter 0.25s ease;
+:root {
+
+  /* ======================================================
+     🔁 SYSTEM DEFAULT BASELINE (DO NOT REMOVE)
+  ====================================================== */
+
+  --font-main: 'Inter', sans-serif;
+  --hover-scale: 1.04;
+  --section-padding-desktop: 8rem;
+
+
+  /* ======================================================
+     🖤 BACKGROUND PRESETS (12 OPTIONS)
+  ====================================================== */
+
+  /* 1️⃣ Pure Black */
+  /* HEX: #000000 */
+  /* --bg-main: #000000; */
+
+  /* 2️⃣ Ultra Dark */
+  /* HEX: #0b0f19 */
+  /* --bg-main: #0b0f19; */
+
+  /* 3️⃣ Premium Slate */
+  /* HEX: #0f172a */
+  /* --bg-main: #0f172a; */
+
+  /* 4️⃣ Soft Charcoal (ACTIVE) */
+  /* HEX: #111827 */
+  --bg-main: #111827;
+
+  /* 5️⃣ Deep Graphite */
+  /* HEX: #1f2937 */
+  /* --bg-main: #1f2937; */
+
+  /* 6️⃣ Royal Indigo */
+  /* HEX: #1e1b4b */
+  /* --bg-main: #1e1b4b; */
+
+  /* 7️⃣ Midnight Purple */
+  /* HEX: #140f1f */
+  /* --bg-main: #140f1f; */
+
+  /* 8️⃣ Premium Navy */
+  /* HEX: #0a192f */
+  /* --bg-main: #0a192f; */
+
+  /* 9️⃣ Emerald Dark */
+  /* HEX: #052e2b */
+  /* --bg-main: #052e2b; */
+
+  /* 🔟 Warm Brown Black */
+  /* HEX: #1c1917 */
+  /* --bg-main: #1c1917; */
+
+  /* 1️⃣1️⃣ Luxury Burgundy */
+  /* HEX: #2b0f18 */
+  /* --bg-main: #2b0f18; */
+
+  /* 1️⃣2️⃣ Pure White Mode */
+  /* HEX: #ffffff */
+  /* --bg-main: #ffffff; */
+
+
+  /* ======================================================
+     📝 TEXT PRESETS
+  ====================================================== */
+
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255,255,255,0.7);
+
+
+  /* ======================================================
+     🌈 HOVER GRADIENT PRESETS (12 OPTIONS)
+  ====================================================== */
+
+  /* 1️⃣ Modern Blue Purple Pink (ACTIVE) */
+  --gradient-1: #60a5fa;
+  --gradient-2: #a78bfa;
+  --gradient-3: #ec4899;
+
+  /* 2️⃣ Cyan Indigo Violet */
+  /* --gradient-1: #22d3ee;
+     --gradient-2: #6366f1;
+     --gradient-3: #8b5cf6; */
+
+  /* 3️⃣ Emerald Teal Blue */
+  /* --gradient-1: #10b981;
+     --gradient-2: #14b8a6;
+     --gradient-3: #3b82f6; */
+
+  /* 4️⃣ Orange Pink Red */
+  /* --gradient-1: #fb923c;
+     --gradient-2: #ec4899;
+     --gradient-3: #ef4444; */
+
+  /* 5️⃣ Gold Luxury */
+  /* --gradient-1: #fbbf24;
+     --gradient-2: #f59e0b;
+     --gradient-3: #d97706; */
+
+  /* 6️⃣ Royal Purple */
+  /* --gradient-1: #7c3aed;
+     --gradient-2: #9333ea;
+     --gradient-3: #c084fc; */
+
+  /* 7️⃣ Sunset Coral */
+  /* --gradient-1: #ff7e5f;
+     --gradient-2: #feb47b;
+     --gradient-3: #ff9966; */
+
+  /* 8️⃣ Ice Blue */
+  /* --gradient-1: #38bdf8;
+     --gradient-2: #818cf8;
+     --gradient-3: #c084fc; */
+
+  /* 9️⃣ Neon Pop */
+  /* --gradient-1: #00f5d4;
+     --gradient-2: #f15bb5;
+     --gradient-3: #fee440; */
+
+  /* 🔟 Forest Premium */
+  /* --gradient-1: #065f46;
+     --gradient-2: #047857;
+     --gradient-3: #10b981; */
+
+  /* 1️⃣1️⃣ Crimson Edge */
+  /* --gradient-1: #b91c1c;
+     --gradient-2: #ef4444;
+     --gradient-3: #f87171; */
+
+  /* 1️⃣2️⃣ Black & White Mode */
+  /* --gradient-1: #ffffff;
+     --gradient-2: #cccccc;
+     --gradient-3: #999999; */
+
+
+  /* ======================================================
+     🧱 BORDER STYLES
+  ====================================================== */
+
+  --border-soft: rgba(255,255,255,0.08);
+
+
+  /* ======================================================
+     🌫 OVERLAY INTENSITY
+  ====================================================== */
+
+  --overlay-dark: rgba(0,0,0,0.6);
+
 }
 
-/* Only apply interaction to text & inline elements */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-a,
-button,
-span,
-svg {
+
+/* ======================================================
+   🌍 GLOBAL BASE
+====================================================== */
+
+/* 🔥 FIX 1 — Body default font stays stable */
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+/* 🔥 FIX 2 — Headings respond to ThemeLab font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-main);
+}
+
+body {
+  background: var(--bg-main);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+
+/* ======================================================
+   🖱 INTERACTIVE SYSTEM (UPGRADED PREMIUM VERSION)
+====================================================== */
+
+* {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease,
+              filter 0.25s ease,
+              background 0.4s ease,
+              border-color 0.4s ease;
+}
+
+h1,h2,h3,h4,h5,h6,p,a,button,span,svg {
   display: inline-block;
   will-change: transform;
+  transform-origin: center;
 }
 
-/* Subtle smooth zoom */
+/* 🔥 PREMIUM HEADING HOVER EFFECT */
 h1:hover,
 h2:hover,
 h3:hover,
 h4:hover,
 h5:hover,
-h6:hover,
+h6:hover {
+  transform: translateY(-4px) scale(1.08);
+  letter-spacing: 0.04em;
+}
+
+/* Subtle hover for text elements */
 p:hover,
 a:hover,
 button:hover,
-span:hover,
-svg:hover {
-  transform: scale(1.04);
+span:hover {
+  transform: translateY(-2px) scale(1.04);
 }
 
-/* Smooth gradient color only for text */
+/* Gradient remains same */
 h1:hover,
 h2:hover,
 h3:hover,
@@ -55,171 +235,47 @@ button:hover,
 span:hover {
   background: linear-gradient(
     90deg,
-    #60a5fa,
-    #a78bfa,
-    #ec4899
+    var(--gradient-1),
+    var(--gradient-2),
+    var(--gradient-3)
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* Icons subtle brighten */
+/* Icon brighten */
 svg:hover {
+  transform: scale(1.15);
   filter: brightness(1.4);
 }
 
-/* Images only slight brightness, no scale */
 img {
-  transition: filter 0.3s ease;
+  transition: filter 0.3s ease, transform 0.35s ease;
 }
 
 img:hover {
+  transform: scale(1.03);
   filter: brightness(1.15);
 }
-@keyframes shine {
-  0% { transform: translateX(-100%) rotate(12deg); }
-  100% { transform: translateX(100%) rotate(12deg); }
-}
-/* Global Heading Hover Zoom */
 
-h1, h2, h3, h4, h5, h6 {
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              letter-spacing 0.4s ease;
-}
 
-h1:hover,
-h2:hover,
-h3:hover,
-h4:hover,
-h5:hover,
-h6:hover {
-  transform: scale(1.08);
-  letter-spacing: 0.05em;
-}
-/* ========================================= */
-/* FORCE HOVER STYLES ON TOUCH DEVICES */
-/* ========================================= */
 
-@media (hover: none) {
+/* ======================================================
+   📏 SECTION SPACING
+====================================================== */
 
-  /* Force gradient text */
-  .group-hover\:text-transparent {
-    color: transparent !important;
-  }
-
-  .group-hover\:bg-clip-text {
-    -webkit-background-clip: text !important;
-    background-clip: text !important;
-  }
-
-  .group-hover\:from-pink-500,
-  .group-hover\:via-purple-500,
-  .group-hover\:to-orange-400 {
-    background-image: linear-gradient(
-      to right,
-      #ec4899,
-      #a855f7,
-      #fb923c
-    ) !important;
-  }
-
-  /* Remove grayscale on mobile */
-  .group-hover\:grayscale-0 {
-    filter: grayscale(0) !important;
-  }
-
-  /* Always show hover opacity elements */
-  .group-hover\:opacity-100 {
-    opacity: 1 !important;
-  }
-
-  /* Always expand hover underline */
-  .group-hover\:w-full {
-    width: 100% !important;
-  }
-
-}
-/* ===============================
-   GLOBAL SECTION SPACING CONTROL
-================================= */
-
-/* Normalize section spacing */
 section {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: var(--section-padding-desktop);
+  padding-bottom: var(--section-padding-desktop);
+  position: relative;
+  transition: padding 0.3s ease;
 }
 
-/* Reduce spacing on mobile */
 @media (max-width: 768px) {
   section {
     padding-top: 4.5rem !important;
     padding-bottom: 4.5rem !important;
   }
-}
-
-/* Remove weird margin collapses */
-section + section {
-  margin-top: 0 !important;
-}
-
-/* Remove accidental extra spacing */
-body {
-  overflow-x: hidden;
-}
-/* ===============================
-   MOBILE HOVER SIMULATION
-================================= */
-
-@media (hover: none) and (pointer: coarse) {
-
-  /* Enable color styles permanently */
-  .group:hover,
-  .group {
-    transform: none !important;
-  }
-
-  /* Make hover color states active */
-  .group-hover\:text-white,
-  .group-hover\:text-white\/80,
-  .group-hover\:text-white\/75 {
-    color: rgba(255,255,255,0.9) !important;
-  }
-
-  .group-hover\:grayscale-0 {
-    filter: grayscale(0%) !important;
-  }
-
-  .group-hover\:opacity-100 {
-    opacity: 1 !important;
-  }
-
-  .group-hover\:translate-x-2 {
-    transform: translateX(0px) !important;
-  }
-
-}
-/* ===============================
-   HEADING MOBILE SCALE
-================================= */
-
-@media (max-width: 768px) {
-
-  h1 {
-    font-size: 2.8rem !important;
-    line-height: 1.1 !important;
-  }
-
-  h2 {
-    font-size: 2rem !important;
-  }
-
-  h3 {
-    font-size: 1.4rem !important;
-  }
-
-}
-section {
-  position: relative;
 }
 
 section::after {
@@ -229,9 +285,25 @@ section::after {
   left: 10%;
   width: 80%;
   height: 1px;
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--border-soft),
+    transparent
+  );
 }
 
 section:last-of-type::after {
   display: none;
+}
+
+
+/* ======================================================
+   📱 MOBILE HEADING SCALE
+====================================================== */
+
+@media (max-width: 768px) {
+  h1 { font-size: 2.8rem !important; line-height: 1.1 !important; }
+  h2 { font-size: 2rem !important; }
+  h3 { font-size: 1.4rem !important; }
 }

@@ -46,7 +46,7 @@ const cardVariants = {
 
 const Collections: React.FC = () => {
   return (
-    <section id="content" className="relative py-44 px-6 bg-black overflow-hidden">
+    <section id="content" className="relative py-44 px-6 overflow-hidden">
 
       <div className="max-w-7xl mx-auto">
 
@@ -126,7 +126,7 @@ const Collections: React.FC = () => {
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
-                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-black transition-all duration-500 cursor-pointer shadow-[0_60px_180px_rgba(0,0,0,0.95)] hover:border-white/30"
+                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-500 cursor-pointer shadow-[0_60px_180px_rgba(0,0,0,0.6)] hover:border-white/30"
               >
 
                 {/* IMAGE */}
@@ -137,8 +137,8 @@ const Collections: React.FC = () => {
                     className="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   />
 
-                  {/* Soft bottom fade */}
-                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/70 to-transparent"></div>
+                  {/* Softer bottom fade */}
+                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
 
                   {/* Reflective sweep */}
                   <div className="absolute inset-0 pointer-events-none overflow-hidden">
