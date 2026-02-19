@@ -13,7 +13,6 @@ import FloatingGallery from "./components/FloatingGallery";
 import Reels from "./components/Reels";
 import ThemeLab from "./components/ThemeLab";
 
-
 const App: React.FC = () => {
   const appRef = useRef<HTMLDivElement>(null);
 

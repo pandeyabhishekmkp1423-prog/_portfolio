@@ -1,76 +1,222 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
-import { motion } from 'framer-motion';
+import React, { useState } from "react";
+import { Send, Phone, MessageCircle, Mail } from "lucide-react";
+import { motion } from "framer-motion";
 
-const ContactCTA: React.FC = () => {
+const ContactPage: React.FC = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    brand: "",
+    budget: "",
+    details: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<null | "success" | "error">(null);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setStatus(null);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "344c1e3c-b22e-4a44-ad15-300569c94157",
+
+          subject: `New Collaboration Inquiry from ${form.name}`,
+
+          from_name: form.name,
+          from_email: form.email,
+
+          name: form.name,
+          email: form.email,
+          brand: form.brand,
+          budget: form.budget,
+          details: form.details,
+
+          message: `
+Full Name: ${form.name}
+Email: ${form.email}
+Brand / Company: ${form.brand}
+Estimated Budget: ${form.budget}
+
+Campaign Details:
+${form.details}
+          `,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus("success");
+        setForm({
+          name: "",
+          email: "",
+          brand: "",
+          budget: "",
+          details: "",
+        });
+      } else {
+        console.log(result);
+        setStatus("error");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+
+    setLoading(false);
+  };
+
   return (
-    <section
-      id="contact"
-      className="relative py-40 px-6 overflow-hidden border-t border-white/5"
-    >
-      {/* Ambient Background Glow */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-[900px] h-[900px] -translate-x-1/2 -translate-y-1/2 bg-white/[0.04] rounded-full blur-[120px]" />
+    <section id="contact" className="relative py-32 px-6">
+      {/* HEADING */}
+      <div className="max-w-4xl mx-auto text-center mb-20">
+        <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+          Let’s Build Something Powerful
+        </h2>
+
+        <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+          Open for brand collaborations, strategic partnerships and
+          performance-driven campaigns. Share your vision below.
+        </p>
       </div>
 
-      <div className="max-w-5xl mx-auto text-center relative z-10">
-
-        {/* Top Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="uppercase tracking-[0.5em] text-xs text-white/40 mb-8"
+      {/* FORM CONTAINER */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-4xl mx-auto"
+      >
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.4)] p-10 md:p-14 space-y-8"
         >
-          Collaborate With Swapnil Pandey
-        </motion.p>
+          {/* ROW 1 */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              required
+              value={form.name}
+              onChange={handleChange}
+              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+            />
 
-        {/* Main Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight mb-10"
-        >
-          LET’S BUILD <br />
-          SOMETHING{" "}
-          <span className="italic font-light text-white/50">
-            ICONIC
-          </span>
-        </motion.h2>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              required
+              value={form.email}
+              onChange={handleChange}
+              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+            />
+          </div>
 
-        {/* Brand Description */}
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="max-w-2xl mx-auto text-white/50 text-lg leading-relaxed mb-16"
-        >
-          Swapnil Pandey is a fashion-forward digital creator blending 
-          lifestyle aesthetics, trend-driven storytelling, and audience-first 
-          engagement. From curated fashion campaigns to relatable reels, 
-          every collaboration is built for impact, authenticity, and reach.
-        </motion.p>
+          {/* ROW 2 */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <input
+              type="text"
+              name="brand"
+              placeholder="Brand / Company"
+              value={form.brand}
+              onChange={handleChange}
+              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+            />
 
-        {/* CTA Button */}
-        <motion.a
-          href="mailto:pandeyswapnil426@gmail.com"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="group inline-flex items-center px-16 py-6 bg-white text-black font-bold uppercase tracking-[0.3em] text-sm rounded-full transition-all duration-500 hover:bg-black hover:text-white border border-white"
-        >
-          Start a Campaign
-          <ArrowRight className="ml-4 transition-transform duration-300 group-hover:translate-x-2" />
-        </motion.a>
+            <input
+              type="text"
+              name="budget"
+              placeholder="Estimated Budget (Optional)"
+              value={form.budget}
+              onChange={handleChange}
+              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+            />
+          </div>
 
+          {/* DETAILS */}
+          <textarea
+            name="details"
+            placeholder="Campaign Details"
+            rows={6}
+            required
+            value={form.details}
+            onChange={handleChange}
+            className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition resize-none"
+          />
+
+          {/* STATUS */}
+          {status === "success" && (
+            <div className="text-green-400 text-center font-medium">
+              ✅ Inquiry sent successfully.
+            </div>
+          )}
+
+          {status === "error" && (
+            <div className="text-red-400 text-center font-medium">
+              ❌ Something went wrong. Please try again.
+            </div>
+          )}
+
+          {/* SUBMIT BUTTON */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-4 rounded-xl bg-white text-black font-semibold text-lg flex items-center justify-center gap-3 transition disabled:opacity-60"
+          >
+            <Send size={20} />
+            {loading ? "Sending..." : "Submit Collaboration Inquiry"}
+          </button>
+        </form>
+      </motion.div>
+
+      {/* CONTACT INFO */}
+      <div className="max-w-4xl mx-auto mt-14 text-center space-y-4">
+        <div className="flex justify-center gap-10 flex-wrap text-white/60 text-sm">
+          <a
+            href="tel:+918874444249"
+            className="flex items-center gap-2 hover:text-white transition"
+          >
+            <Phone size={16} />
+            +91 8874444249
+          </a>
+
+          <a
+            href="https://wa.me/918874444249"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-white transition"
+          >
+            <MessageCircle size={16} />
+            WhatsApp Direct
+          </a>
+
+          <a
+            href="mailto:pandeyabhishekmkp1423@gmail.com"
+            className="flex items-center gap-2 hover:text-white transition"
+          >
+            <Mail size={16} />
+            pandeyabhishekmkp1423@gmail.com
+          </a>
+        </div>
       </div>
     </section>
   );
 };
 
-export default ContactCTA;
+export default ContactPage;

@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
             {[
               { value: "1M+", label: "Followers" },
               { value: "5%+", label: "Engagement" },
-              { value: "200K+", label: "Avg Reel Views" },
+              { value: "500K+", label: "Avg Reel Views" },
             ].map((stat, index) => (
               <div key={index} className="group relative cursor-pointer">
                 <div className="text-3xl md:text-4xl font-bold">

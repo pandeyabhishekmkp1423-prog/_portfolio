@@ -4,157 +4,170 @@ import { motion } from "framer-motion";
 
 const reelData = [
   {
-    img: "https://picsum.photos/id/101/600/1000",
+    video: "/reel1.mp4",
     views: "450K",
-    title: "Streetwear Transition",
-    desc: "High-retention outfit transformation engineered for share velocity."
+    title: "Max HealthCare",
+    desc: "Strategic healthcare campaign focused on awareness storytelling, building trust, driving engagement, and strengthening brand credibility through authentic lifestyle integration.",
+    instagram: "https://www.instagram.com/reel/DPMFOJmD_lO/?igsh=NjcwOGR4MmtlcjZ5"
   },
   {
-    img: "https://picsum.photos/id/102/600/1000",
+    video: "/reel2.mp4",
     views: "1.2M",
-    title: "Luxury Travel Frame",
-    desc: "Cinematic destination storytelling with aspirational composition."
+    title: "Quorfit Band",
+    desc: "Performance-focused fitness collaboration highlighting product functionality, improving brand recall, increasing engagement metrics, and driving measurable conversion growth.",
+    instagram: "https://www.instagram.com/reel/DULZmsMD_Zr/?igsh=c3BrNjNqd3BlOGpx"
   },
   {
-    img: "https://picsum.photos/id/103/600/1000",
+    video: "/reel3.mp4",
     views: "890K",
-    title: "Relatable POV",
-    desc: "Trend-aligned narrative content connecting instantly with Gen Z."
+    title: "District",
+    desc: "Culture-driven brand activation blending youth trends, premium visuals, relatable storytelling, and strategic positioning to maximize audience engagement impact.",
+    instagram: "https://www.instagram.com/reel/DS7Q4SyDw3i/?igsh=MTMxbjI2MTIxNXMxOQ=="
   },
   {
-    img: "https://picsum.photos/id/104/600/1000",
+    video: "/reel4.mp4",
     views: "320K",
-    title: "Lifestyle Edit",
-    desc: "Minimal daily aesthetic blending authenticity with polish."
+    title: "Antigravity Mattress",
+    desc: "High-impact product storytelling emphasizing comfort innovation, cinematic framing, emotional appeal, and thoughtful messaging to enhance consumer consideration.",
+    instagram: "https://www.instagram.com/reel/DTzXKLijwrn/?igsh=ZzJwMnVva3JoeXlw"
   },
 ];
 
 const Reels: React.FC = () => {
+
+  const handleRedirect = (url: string) => {
+    window.open(url, "_blank");
+  };
+
   return (
-    <section id="reels" className="relative py-20 md:py-28 px-6">
+    <section id="reels" className="relative py-24 px-6">
 
       {/* HEADER */}
-      <div className="max-w-3xl mx-auto text-center mb-14 md:mb-20">
+      <div className="max-w-3xl mx-auto text-center mb-20">
 
-        <span className="text-white/40 md:text-white/20 uppercase tracking-[0.6em] text-xs block mb-4 md:mb-6">
-          Social Performance
+        <span className="text-white/60 uppercase tracking-[0.5em] text-xs block mb-6">
+          Brand Collaborations
         </span>
 
-        <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight leading-[1.1] mb-6 md:mb-8">
-          <span className="
-            bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400
-            bg-clip-text text-transparent
-          ">
-            Viral Reels
-          </span>
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight mb-8 text-white">
+          Strategic Partnerships
         </h2>
 
-        <p className="
-          text-white/70 md:text-white/50
-          leading-relaxed text-sm sm:text-base md:text-lg
-          mb-8 md:mb-10
-          max-w-xl mx-auto
-        ">
-          High-performing short-form content blending storytelling,
-          cultural relatability, and aspirational aesthetics —
-          crafted to drive measurable audience impact.
+        <p className="text-white/85 leading-relaxed text-base md:text-lg mb-10 max-w-xl mx-auto">
+          Collaborating with leading brands to create performance-driven
+          short-form campaigns blending authenticity, storytelling,
+          and measurable audience impact.
         </p>
 
-        {/* CENTERED CTA */}
         <a
           href="https://www.instagram.com/swapnilpandeyg"
           target="_blank"
           rel="noopener noreferrer"
           className="
-            inline-flex items-center gap-2 px-5 py-3
-            border border-white/30 md:border-white/20
-            text-white md:text-white/70
+            inline-flex items-center gap-2 px-6 py-3
+            border border-white/40
+            text-white
             uppercase tracking-[0.35em] text-xs
             transition-all duration-300
-            md:hover:text-white md:hover:border-white/40
+            hover:border-white hover:bg-white hover:text-black
           "
         >
           <Instagram size={16} />
-          Visit Profile
+          View Instagram
         </a>
 
       </div>
 
       {/* GRID */}
-      <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
         {reelData.map((reel, idx) => (
-          <motion.div
-            key={idx}
-            whileHover={{ y: -10 }}
-            transition={{ type: "spring", stiffness: 260 }}
-            className="group relative"
-          >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.9)]">
+          <div key={idx} className="flex flex-col">
 
-              <img
-                src={reel.img}
-                alt={reel.title}
+            {/* VIDEO CARD */}
+            <motion.div
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              onClick={() => handleRedirect(reel.instagram)}
+              className="
+                cursor-pointer
+                relative rounded-3xl overflow-hidden
+                border border-white/10
+                shadow-[0_20px_50px_rgba(0,0,0,0.45)]
+              "
+            >
+
+              <video
+                src={reel.video}
+                autoPlay
+                muted
+                loop
+                playsInline
                 className="
                   w-full aspect-[9/16] object-cover
-                  md:grayscale md:group-hover:grayscale-0
-                  transition-all duration-700
-                  md:group-hover:scale-110
+                  transition-transform duration-700
+                  hover:scale-105
                 "
               />
 
-              {/* Softer overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-
-              {/* Glow */}
-              <div className="
-                absolute inset-0
-                opacity-40 md:opacity-0
-                md:group-hover:opacity-100
-                transition-opacity duration-500
-                bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.12),transparent_70%)]
-              "></div>
-
-              {/* Play button */}
+              {/* Play Icon */}
               <div className="
                 absolute inset-0 flex items-center justify-center
-                opacity-70 md:opacity-0
-                md:group-hover:opacity-100
-                transition-opacity duration-500
+                opacity-0 hover:opacity-100
+                transition duration-400
               ">
-                <div className="p-3 bg-white/20 backdrop-blur rounded-full border border-white/20">
-                  <Play fill="white" size={20} />
+                <div className="p-4 bg-white/25 backdrop-blur-md rounded-full border border-white/30">
+                  <Play fill="white" size={22} />
                 </div>
               </div>
 
-              <div className="absolute bottom-4 left-4 text-xs font-semibold text-white tracking-wide">
+              {/* Views */}
+              <div className="
+                absolute bottom-4 left-4
+                px-3 py-1 text-xs font-semibold
+                bg-black/40 backdrop-blur-sm
+                rounded-full border border-white/20
+                text-white
+              ">
                 {reel.views}
               </div>
-            </div>
 
-            <div className="mt-4 md:mt-5 text-center px-1">
-              <h3 className="
-                text-sm sm:text-base md:text-lg
-                font-semibold mb-2 tracking-tight
-                text-white md:text-white/90
-                transition-all duration-300
-                md:group-hover:text-white
-              ">
+            </motion.div>
+
+            {/* TEXT SECTION (Now completely stable) */}
+            <div className="mt-6 text-center px-4">
+
+              <h3 className="text-xl md:text-2xl font-semibold text-white mb-4">
                 {reel.title}
               </h3>
 
-              <p className="
-                text-white/70 md:text-white/50
-                text-xs sm:text-sm leading-relaxed
-                md:group-hover:text-white/75
-                transition-all duration-300
-              ">
+              <p className="text-white/85 text-sm md:text-base leading-relaxed">
                 {reel.desc}
               </p>
+
             </div>
 
-          </motion.div>
+          </div>
         ))}
+
+      </div>
+
+      {/* WORK WITH US */}
+      <div className="text-center mt-24">
+
+        <a
+          href="mailto:your@email.com"
+          className="
+            inline-flex items-center gap-2 px-6 py-3
+            border border-white/40
+            text-white
+            uppercase tracking-[0.35em] text-xs
+            transition-all duration-300
+            hover:border-white hover:bg-white hover:text-black
+          "
+        >
+          Work With Us
+        </a>
 
       </div>
 
