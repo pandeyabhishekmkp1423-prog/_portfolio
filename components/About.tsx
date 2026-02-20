@@ -64,12 +64,6 @@ const About: React.FC = () => {
       id="about"
       className="relative py-28 md:py-44 px-6 overflow-hidden"
     >
-      {/* Subtle Background Glow */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        <div className="absolute top-[-15%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-pink-500/10 blur-[120px] rounded-full" />
-      </div>
-
       {/* Watermark */}
       <motion.div
         style={{ transform: `translateY(${offsetY}px)` }}
@@ -152,12 +146,7 @@ const About: React.FC = () => {
                 transition={{ type: "spring", stiffness: 220 }}
                 className="group relative max-w-2xl mb-7 cursor-default"
               >
-                <p className="
-                  text-white/70 
-                  leading-relaxed text-base md:text-lg 
-                  transition-all duration-300
-                  group-hover:text-white/85
-                ">
+                <p className="text-white/70 leading-relaxed text-base md:text-lg transition-all duration-300 group-hover:text-white/85">
                   {text}
                 </p>
 
@@ -170,13 +159,11 @@ const About: React.FC = () => {
               {[
                 {
                   title: "Core Focus",
-                  content:
-                    "Fashion • Travel • Lifestyle • Relatable Reels",
+                  content: "Fashion • Travel • Lifestyle • Relatable Reels",
                 },
                 {
                   title: "Primary Audience",
-                  content:
-                    "18–34 Years • Urban & Tier 2 Indian Cities",
+                  content: "18–34 Years • Urban & Tier 2 Indian Cities",
                 },
               ].map((item, index) => (
                 <motion.div
@@ -193,12 +180,7 @@ const About: React.FC = () => {
                     {item.title}
                   </h4>
 
-                  <p className="
-                    text-white/60 
-                    text-sm leading-relaxed 
-                    group-hover:text-white/80
-                    transition-colors duration-300
-                  ">
+                  <p className="text-white/60 text-sm leading-relaxed group-hover:text-white/80 transition-colors duration-300">
                     {item.content}
                   </p>
 

@@ -11,6 +11,7 @@ import Brands from "./components/Brands";
 import Press from "./components/Press";
 import ContactCTA from "./components/ContactCTA";
 import Footer from "./components/Footer";
+import ThemeLab from "./components/ThemeLab"; // ✅ Added back
 
 const App: React.FC = () => {
   const appRef = useRef<HTMLDivElement>(null);
@@ -32,6 +33,9 @@ const App: React.FC = () => {
       onMouseMove={handleMouseMove}
       className="global-spotlight relative text-white min-h-screen"
     >
+      {/* Background / Experimental Layer */}
+      <ThemeLab />
+
       <Header />
 
       {/* Authority */}
