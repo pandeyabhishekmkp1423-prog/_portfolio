@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-black mb-6 leading-[0.92] tracking-tighter">
             INFLUENCING THE <br />
             DIGITAL <br />
-            GENERATION.
+            GENERATION
           </h1>
 
           {/* Description */}

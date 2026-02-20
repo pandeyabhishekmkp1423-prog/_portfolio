@@ -5,6 +5,12 @@ import { ArrowUpRight } from "lucide-react";
 const articles = [
   {
     quote:
+      "His visual aesthetics and relatability create a benchmark for modern lifestyle creators.",
+    source: "Hindustan Times",
+    link: "https://www.hindustantimes.com/brand-stories/swapnil-pandey-talks-about-how-brands-and-influencers-can-remain-compliant-101649684238430.html"
+  },
+  {
+    quote:
       "Swapnil Pandey is redefining fashion influence with a signature blend of authenticity and aspirational storytelling.",
     source: "Mid-Day",
     link: "https://www.mid-day.com/brand-media/article/swapnil-pandey-brimming-up-with-experience-across-reigns-of-travel-fashion-and-lifestyle-23205222"
@@ -15,12 +21,7 @@ const articles = [
     source: "The Asian Age",
     link: "https://newsable.asianetnews.com/business/swapnil-pandey-decodes-how-influencer-marketing-is-a-crucial-aspect-of-business-growth-vpn-r7rbm4"
   },
-  {
-    quote:
-      "His visual aesthetics and relatability create a benchmark for modern lifestyle creators.",
-    source: "Hindustan Times",
-    link: "https://www.hindustantimes.com/brand-stories/swapnil-pandey-talks-about-how-brands-and-influencers-can-remain-compliant-101649684238430.html"
-  }
+  
 ];
 
 const Press: React.FC = () => {
@@ -140,5 +141,4 @@ const Press: React.FC = () => {
     </section>
   );
 };
-
 export default Press;
