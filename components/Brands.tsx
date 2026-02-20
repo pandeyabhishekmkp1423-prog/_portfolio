@@ -55,19 +55,17 @@ const Brands: React.FC = () => {
       id="brands"
       className="relative py-40 px-6 overflow-hidden border-t border-white/5"
     >
-      {/* Ambient Depth Glow */}
+      {/* Ambient Depth Glow (Softer) */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 w-[1000px] h-[700px] -translate-x-1/2 -translate-y-1/2 bg-white/[0.04] rounded-full blur-[160px]" />
+        <div className="absolute top-1/2 left-1/2 w-[900px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-white/[0.03] rounded-full blur-[140px]" />
       </div>
 
       <div className="max-w-7xl mx-auto text-center relative z-10">
 
-        {/* Section Label */}
         <span className="text-white/25 uppercase tracking-[0.6em] text-xs font-semibold block mb-8">
           Brand Collaborations
         </span>
 
-        {/* Heading */}
         <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-20 leading-[1.1]">
           Brands That Trust{" "}
           <span className="italic font-light text-white/50">
@@ -75,7 +73,6 @@ const Brands: React.FC = () => {
           </span>
         </h2>
 
-        {/* Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -88,29 +85,39 @@ const Brands: React.FC = () => {
               key={idx}
               variants={cardVariants}
               whileHover={{ y: -10 }}
-              className="group relative rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-12 transition-all duration-500 hover:border-white/30 hover:bg-white/[0.06] hover:shadow-[0_20px_60px_rgba(255,255,255,0.06)]"
+              className="group relative rounded-3xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-12 transition-all duration-500 md:hover:border-white/30 md:hover:bg-white/[0.06] md:hover:shadow-[0_20px_60px_rgba(255,255,255,0.06)]"
             >
-              {/* Soft Inner Shadow Layer */}
               <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/5 pointer-events-none" />
 
-              {/* Logo */}
               <div className="flex items-center justify-center h-24">
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-14 object-contain grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                  className="
+                    max-h-14 object-contain
+                    transition-all duration-500
+
+                    /* Mobile → Always colored */
+                    opacity-100 grayscale-0
+
+                    /* Desktop → Grayscale by default */
+                    md:grayscale md:opacity-60
+
+                    /* Desktop Hover → Colored */
+                    md:group-hover:grayscale-0 
+                    md:group-hover:opacity-100 
+                    md:group-hover:scale-105
+                  "
                 />
               </div>
 
-              {/* Brand Name */}
-              <p className="mt-8 text-xs tracking-[0.3em] uppercase text-white/35 group-hover:text-white/70 transition-colors duration-300">
+              <p className="mt-8 text-xs tracking-[0.3em] uppercase text-white/35 md:group-hover:text-white/70 transition-colors duration-300">
                 {brand.name}
               </p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Statement */}
         <p className="mt-28 text-white/40 text-lg leading-relaxed max-w-3xl mx-auto">
           Over{" "}
           <span className="text-white font-semibold">
