@@ -30,36 +30,37 @@ const campaigns = [
 
 const FloatingGallery: React.FC = () => {
   return (
-    <section className="relative py-24 md:py-36 px-6 overflow-hidden">
+    <section className="relative py-28 md:py-44 px-6 overflow-hidden">
 
-      <div className="max-w-6xl mx-auto">
+      {/* Ambient Glow */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 w-[900px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-gradient-radial from-purple-500/10 via-blue-500/6 to-transparent blur-3xl opacity-40"></div>
+      </div>
 
-        {/* CENTERED HEADING */}
+      <div className="max-w-6xl mx-auto relative z-10">
+
+        {/* HEADING */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16 md:mb-24"
+          className="text-center mb-20 md:mb-32"
         >
-          <span className="text-white/40 uppercase tracking-[0.6em] text-xs font-semibold block mb-6">
+          <span className="text-white/35 uppercase tracking-[0.7em] text-xs font-semibold block mb-6">
             Featured Work
           </span>
 
-          <motion.h2
-            whileHover={{ scale: 1.02 }}
-            transition={{ type: "spring", stiffness: 200 }}
-            className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]"
-          >
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05]">
             Campaign{" "}
-            <span className="italic font-light text-white/60">
+            <span className="italic font-light text-white/80 hover:bg-gradient-to-r hover:from-blue-400 hover:via-purple-400 hover:to-pink-500 hover:bg-clip-text hover:text-transparent transition-all duration-500">
               Highlights
             </span>
-          </motion.h2>
+          </h2>
         </motion.div>
 
         {/* CAMPAIGNS */}
-        <div className="space-y-20 md:space-y-32">
+        <div className="space-y-24 md:space-y-36">
 
           {campaigns.map((item, index) => {
             const reversed = index % 2 !== 0;
@@ -71,14 +72,14 @@ const FloatingGallery: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.9 }}
-                className={`grid lg:grid-cols-2 gap-10 md:gap-20 items-center ${
+                className={`grid lg:grid-cols-2 gap-12 md:gap-24 items-center ${
                   reversed ? "lg:grid-flow-dense" : ""
                 }`}
               >
 
                 {/* IMAGE */}
                 <motion.div
-                  whileHover={{ y: -10 }}
+                  whileHover={{ y: -12 }}
                   transition={{ type: "spring", stiffness: 180 }}
                   className={`relative group ${
                     reversed ? "lg:col-start-2" : ""
@@ -87,7 +88,9 @@ const FloatingGallery: React.FC = () => {
                   <div className="
                     relative rounded-3xl overflow-hidden
                     border border-white/10
-                    shadow-[0_50px_120px_rgba(0,0,0,0.6)]
+                    shadow-[0_60px_140px_rgba(0,0,0,0.7)]
+                    transition-all duration-500
+                    group-hover:shadow-[0_80px_180px_rgba(0,0,0,0.8)]
                   ">
 
                     <img
@@ -100,49 +103,52 @@ const FloatingGallery: React.FC = () => {
                       "
                     />
 
-                    {/* Softer glow */}
-                    <div className="
-                      absolute inset-0
-                      bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05),transparent_70%)]
-                      md:opacity-0 md:group-hover:opacity-100
-                      transition-opacity duration-500
-                    "></div>
-
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
                   </div>
                 </motion.div>
 
                 {/* TEXT */}
                 <motion.div
-                  whileHover={{ x: 6 }}
+                  whileHover={{ x: 8 }}
                   transition={{ type: "spring", stiffness: 200 }}
-                  className="max-w-xl"
+                  className="max-w-xl group"
                 >
-                  <motion.h3
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ type: "spring", stiffness: 250 }}
-                    className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-6 md:mb-8 tracking-tight"
-                  >
+                  <h3 className="
+                    text-2xl sm:text-3xl md:text-4xl font-semibold mb-8 tracking-tight
+                    text-white
+                    group-hover:bg-gradient-to-r
+                    group-hover:from-blue-400
+                    group-hover:via-purple-400
+                    group-hover:to-pink-500
+                    group-hover:bg-clip-text
+                    group-hover:text-transparent
+                    transition-all duration-500
+                  ">
                     {item.title}
-                  </motion.h3>
+                  </h3>
 
-                  <motion.p
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                    className="text-white/70 md:text-white/60 text-base md:text-lg leading-relaxed mb-8 md:mb-10"
-                  >
+                  <p className="
+                    text-white/65 text-base md:text-lg leading-relaxed mb-10
+                    group-hover:text-white/85
+                    transition-colors duration-500
+                  ">
                     {item.description}
-                  </motion.p>
+                  </p>
 
-                  <motion.div
-                    whileHover={{ letterSpacing: "0.15em" }}
-                    transition={{ duration: 0.3 }}
-                    className="text-white/50 uppercase tracking-[0.2em] md:tracking-widest text-xs"
-                  >
+                  <div className="
+                    text-white/40 uppercase tracking-[0.25em] text-xs
+                    group-hover:tracking-[0.35em]
+                    transition-all duration-500
+                  ">
                     {item.impact}
-                  </motion.div>
+                  </div>
 
-                  {/* Underline */}
-                  <div className="mt-8 h-[1px] w-12 md:w-0 bg-white/40 md:group-hover:w-full transition-all duration-700"></div>
+                  <div className="
+                    mt-8 h-[2px] w-0
+                    bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500
+                    group-hover:w-full
+                    transition-all duration-700
+                  "></div>
                 </motion.div>
 
               </motion.div>
@@ -150,8 +156,10 @@ const FloatingGallery: React.FC = () => {
           })}
 
         </div>
-
       </div>
+
+      {/* Subtle Grain */}
+      <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] pointer-events-none"></div>
     </section>
   );
 };

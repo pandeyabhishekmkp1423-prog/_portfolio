@@ -24,14 +24,14 @@ const About: React.FC = () => {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = -(y - centerY) / 30;
-    const rotateY = (x - centerX) / 30;
+    const rotateX = -(y - centerY) / 28;
+    const rotateY = (x - centerX) / 28;
 
     frame.style.transform = `
       perspective(1400px)
       rotateX(${rotateX}deg)
       rotateY(${rotateY}deg)
-      scale(1.03)
+      scale(1.035)
     `;
   };
 
@@ -52,7 +52,7 @@ const About: React.FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2,
+        delay: i * 0.18,
         duration: 0.8,
         ease: [0.16, 1, 0.3, 1],
       },
@@ -62,8 +62,14 @@ const About: React.FC = () => {
   return (
     <section
       id="about"
-      className="relative py-24 md:py-40 px-6 overflow-hidden"
+      className="relative py-28 md:py-44 px-6 overflow-hidden"
     >
+      {/* Subtle Background Glow */}
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute top-[-15%] left-[-10%] w-[500px] h-[500px] bg-blue-500/10 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-pink-500/10 blur-[120px] rounded-full" />
+      </div>
+
       {/* Watermark */}
       <motion.div
         style={{ transform: `translateY(${offsetY}px)` }}
@@ -89,7 +95,7 @@ const About: React.FC = () => {
               ref={frameRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative aspect-[3/4] rounded-3xl overflow-hidden transition-transform duration-300 ease-out shadow-[0_50px_120px_rgba(0,0,0,0.9)]"
+              className="relative aspect-[3/4] rounded-3xl overflow-hidden transition-transform duration-300 ease-out shadow-[0_60px_140px_rgba(0,0,0,0.85)]"
             >
               <img
                 src="/images/about.jpg"
@@ -97,8 +103,7 @@ const About: React.FC = () => {
                 className="w-full h-full object-cover transition-all duration-1000 md:hover:scale-105 md:hover:brightness-110"
               />
 
-              {/* Softer overlay (theme compatible) */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
             </div>
 
             {/* Quote Box */}
@@ -107,9 +112,9 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="mt-8 bg-black/60 border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] relative"
+              className="mt-10 bg-white/[0.04] border border-white/10 p-6 md:p-8 rounded-2xl backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.6)] relative"
             >
-              <p className="text-sm italic text-white/80 md:text-white/70 leading-relaxed tracking-wide">
+              <p className="text-sm italic text-white/80 leading-relaxed tracking-wide">
                 “Influence isn’t about visibility. It’s about impact, emotion, and the stories that stay.”
               </p>
             </motion.div>
@@ -122,13 +127,13 @@ const About: React.FC = () => {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <span className="text-white/50 md:text-white/35 uppercase tracking-[0.5em] text-xs font-semibold block mb-6 md:mb-10">
+            <span className="text-white/40 uppercase tracking-[0.55em] text-xs font-semibold block mb-8">
               Meet Swapnil
             </span>
 
-            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-10 md:mb-14 leading-[1.1] tracking-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-12 leading-[1.08] tracking-tight">
               Influence Built Through{" "}
-              <span className="italic font-light text-white/80 md:text-white/60">
+              <span className="italic font-light bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500 bg-clip-text text-transparent">
                 Authentic Energy
               </span>
             </h2>
@@ -144,24 +149,24 @@ const About: React.FC = () => {
                 custom={i}
                 variants={paragraphVariant}
                 whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 250 }}
-                className="group relative max-w-2xl mb-6 md:mb-8 cursor-default"
+                transition={{ type: "spring", stiffness: 220 }}
+                className="group relative max-w-2xl mb-7 cursor-default"
               >
                 <p className="
-                  text-white/75 md:text-white/60 
+                  text-white/70 
                   leading-relaxed text-base md:text-lg 
                   transition-all duration-300
-                  md:group-hover:text-white/85
+                  group-hover:text-white/85
                 ">
                   {text}
                 </p>
 
-                <div className="absolute bottom-0 left-0 h-[1px] w-full md:w-0 bg-white/30 md:group-hover:w-full transition-all duration-500"></div>
+                <div className="absolute bottom-0 left-0 h-[1px] w-0 group-hover:w-full bg-white/30 transition-all duration-500"></div>
               </motion.div>
             ))}
 
             {/* INFO GRID */}
-            <div className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+            <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-20">
               {[
                 {
                   title: "Core Focus",
@@ -177,27 +182,27 @@ const About: React.FC = () => {
                 <motion.div
                   key={index}
                   whileHover={{ y: -6 }}
-                  transition={{ type: "spring", stiffness: 280 }}
+                  transition={{ type: "spring", stiffness: 260 }}
                   className="group relative"
                 >
-                  <div className="text-2xl md:text-3xl font-bold text-white/30 mb-4">
+                  <div className="text-3xl font-bold text-white/20 mb-5">
                     0{index + 1}
                   </div>
 
-                  <h4 className="text-white uppercase tracking-[0.35em] text-xs mb-4">
+                  <h4 className="text-white uppercase tracking-[0.4em] text-xs mb-5">
                     {item.title}
                   </h4>
 
                   <p className="
-                    text-white/70 md:text-white/40 
+                    text-white/60 
                     text-sm leading-relaxed 
-                    md:group-hover:text-white/75
+                    group-hover:text-white/80
                     transition-colors duration-300
                   ">
                     {item.content}
                   </p>
 
-                  <div className="mt-4 h-[1px] w-full md:w-0 bg-white/30 md:group-hover:w-full transition-all duration-500"></div>
+                  <div className="mt-6 h-[1px] w-0 group-hover:w-full bg-white/30 transition-all duration-500"></div>
                 </motion.div>
               ))}
             </div>

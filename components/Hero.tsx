@@ -2,11 +2,26 @@ import React from "react";
 import { ArrowUpRight, Instagram } from "lucide-react";
 
 const instagramUrl =
-  "https://www.instagram.com/swapnilpandeyg?igsh=MW92Nnk3dWgxbzVwYQ==";
+  "https://www.instagram.com/swapnilpandeyg?igsh=MWxvaTR0a3YzbGh6Ng==";
 
 const heroImage = "/hero.jpg";
 
 const Hero: React.FC = () => {
+
+  const handleScrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (element) {
+      const offset = 80; // adjust if your header height changes
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <section className="relative pt-24 pb-20 md:pt-40 md:pb-32 px-6 overflow-hidden">
 
@@ -61,6 +76,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4">
 
             <button
+              onClick={handleScrollToContact}
               className="
                 px-8 py-4
                 bg-[var(--text-primary)]

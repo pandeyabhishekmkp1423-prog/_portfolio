@@ -1,165 +1,125 @@
-import React, { useRef } from 'react';
-import { Camera, Map, Shirt, Mic } from 'lucide-react';
-import { motion } from 'framer-motion';
-
-const INSTAGRAM_LINK = "https://www.instagram.com/swapnilpandeyg";
+import React, { useRef } from "react";
+import { Camera, Map, Shirt, Mic, ArrowUpRight, Play } from "lucide-react";
+import { motion } from "framer-motion";
 
 const collectionData = [
   {
-    title: 'Fashion',
-    icon: <Shirt size={24} />,
-    desc: 'Men’s styling, grooming routines, and brand-led lookbooks crafted for modern audiences.',
-    img: 'https://picsum.photos/id/157/600/400'
+    title: "Fashion",
+    icon: <Shirt size={20} />,
+    desc: "Men’s styling, grooming routines, and brand-led lookbooks crafted for modern audiences.",
+    video: "/reel9.mp4",
+    link: "https://www.instagram.com/reel/DJJ0TMQSQ7t"
   },
   {
-    title: 'Travel',
-    icon: <Map size={24} />,
-    desc: 'Destination snippets, local culture, and immersive vlog-style reels.',
-    img: 'https://picsum.photos/id/10/600/400'
+    title: "Travel",
+    icon: <Map size={20} />,
+    desc: "Destination snippets, local culture, and immersive vlog-style reels.",
+    video: "/reel10.mp4",
+    link: "https://www.instagram.com/reel/DLCj7JxyMHB/?igsh=ejB5MTZ3aXpubXlh"
   },
   {
-    title: 'Lifestyle',
-    icon: <Camera size={24} />,
-    desc: 'Fitness, productivity, personal growth, and aspirational daily content.',
-    img: 'https://picsum.photos/id/106/600/400'
+    title: "Lifestyle",
+    icon: <Camera size={20} />,
+    desc: "Fitness, productivity, personal growth, and aspirational daily content.",
+    video: "/reel11.mp4",
+    link: "https://www.instagram.com/reel/C8mMPgIyDoD/?igsh=MW92MzR6bXQ4M2Jsdw=="
   },
   {
-    title: 'Trendy & Relatable Reels',
-    icon: <Mic size={24} />,
-    desc: 'POVs, humor, storytelling, and content that connects instantly with Gen Z.',
-    img: 'https://picsum.photos/id/225/600/400'
+    title: "Trendy & Relatable Reels",
+    icon: <Mic size={20} />,
+    desc: "POVs, humor, storytelling, and content that connects instantly with Gen Z.",
+    video: "/reel12.mp4",
+    link: "https://www.instagram.com/reel/DUa0Qm4j28I/?igsh=MW82dGd3ZXU2ZXJibg=="
   }
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.15,
-      duration: 0.9,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  })
-};
 
 const Collections: React.FC = () => {
   return (
     <section id="content" className="relative py-44 px-6 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto relative z-10">
 
-        {/* HEADER */}
-        <div className="text-center mb-32">
-          <span className="text-white/25 uppercase tracking-[0.6em] text-xs font-semibold block mb-6">
+        <div className="text-center mb-28">
+          <span className="text-white/30 uppercase tracking-[0.7em] text-xs font-semibold block mb-6">
             Content Strategy
           </span>
 
-          <h2 className="text-5xl md:text-6xl font-semibold tracking-tight">
-            Content{" "}
-            <span className="italic font-light text-white/50">
-              Pillars
-            </span>
+          <h2 className="text-5xl md:text-6xl font-semibold tracking-tight text-white">
+            Content Pillars
           </h2>
         </div>
 
-        {/* GRID */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-12">
 
           {collectionData.map((item, idx) => {
             const cardRef = useRef<HTMLAnchorElement>(null);
 
-            const handleMouseMove = (e: React.MouseEvent) => {
-              const card = cardRef.current;
-              if (!card) return;
-
-              const rect = card.getBoundingClientRect();
-              const x = e.clientX - rect.left;
-              const y = e.clientY - rect.top;
-
-              const centerX = rect.width / 2;
-              const centerY = rect.height / 2;
-
-              const rotateX = -(y - centerY) / 30;
-              const rotateY = (x - centerX) / 30;
-
-              card.style.transform = `
-                perspective(1500px)
-                rotateX(${rotateX}deg)
-                rotateY(${rotateY}deg)
-                translateY(-14px)
-                scale(1.04)
-              `;
-            };
-
-            const handleMouseLeave = () => {
-              const card = cardRef.current;
-              if (!card) return;
-
-              card.style.transform = `
-                perspective(1500px)
-                rotateX(0deg)
-                rotateY(0deg)
-                translateY(0px)
-                scale(1)
-              `;
-            };
-
             return (
               <motion.a
                 key={idx}
-                href={INSTAGRAM_LINK}
+                href={item.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                custom={idx}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={cardVariants}
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 7 + idx,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
+                whileHover={{ y: -8 }}
+                transition={{ type: "spring", stiffness: 200 }}
                 ref={cardRef}
-                onMouseMove={handleMouseMove}
-                onMouseLeave={handleMouseLeave}
-                className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-xl transition-all duration-500 cursor-pointer shadow-[0_60px_180px_rgba(0,0,0,0.6)] hover:border-white/30"
+                className="group relative rounded-3xl overflow-hidden
+                  bg-[#0f172a]
+                  border border-white/10
+                  shadow-[0_40px_120px_rgba(0,0,0,0.8)]
+                  hover:shadow-[0_60px_160px_rgba(0,0,0,0.9)]
+                  transition-all duration-500"
               >
 
-                {/* IMAGE */}
-                <div className="relative overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full aspect-[4/5] object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
+                {/* OUTER GLOW */}
+                <div className="absolute inset-0 rounded-3xl border border-transparent group-hover:border-white/20 transition duration-500 pointer-events-none"></div>
+
+                {/* VIDEO CONTAINER */}
+                <div className="relative">
+
+                  <video
+                    src={item.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full aspect-[9/16] object-cover"
                   />
 
-                  {/* Softer bottom fade */}
-                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
+                  {/* EDGE VIGNETTE */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40 pointer-events-none"></div>
 
-                  {/* Reflective sweep */}
-                  <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    <div className="absolute -left-1/2 top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/10 to-transparent rotate-12 translate-x-[-200%] group-hover:translate-x-[300%] transition-all duration-1000"></div>
+                  {/* TOP LIGHT GLASS */}
+                  <div className="absolute top-0 left-0 w-full h-20 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+
+                  {/* PLAY BUTTON */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-400 pointer-events-none">
+                    <div className="p-4 bg-white/20 backdrop-blur-lg rounded-full border border-white/30">
+                      <Play fill="white" size={20} />
+                    </div>
                   </div>
                 </div>
 
                 {/* CONTENT */}
-                <div className="p-8 pt-6">
+                <div className="p-8 bg-gradient-to-b from-transparent to-[#0f172a]">
 
-                  <div className="mb-5 text-white p-3 bg-white/10 backdrop-blur-md inline-flex items-center justify-center w-fit rounded-xl border border-white/10 group-hover:bg-white group-hover:text-black transition-all duration-500">
-                    {item.icon}
+                  <div className="mb-5 inline-flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-white/10 border border-white/10 text-white">
+                      {item.icon}
+                    </div>
+
+                    <h3 className="text-xl font-semibold text-white">
+                      {item.title}
+                    </h3>
                   </div>
 
-                  <h3 className="text-2xl font-semibold mb-4 tracking-tight transition-all duration-500 group-hover:translate-x-2">
-                    {item.title}
-                  </h3>
-
-                  <p className="text-white/50 text-sm leading-relaxed transition-all duration-500 group-hover:text-white/80">
+                  <p className="text-white/50 text-sm leading-relaxed mb-6">
                     {item.desc}
                   </p>
+
+                  <div className="flex items-center gap-2 text-xs uppercase tracking-widest text-white/40 group-hover:text-white transition">
+                    View Reel <ArrowUpRight size={14} />
+                  </div>
 
                 </div>
 
@@ -168,12 +128,7 @@ const Collections: React.FC = () => {
           })}
 
         </div>
-
       </div>
-
-      {/* Ambient center glow */}
-      <div className="absolute top-1/2 left-1/2 w-[1000px] h-[600px] -translate-x-1/2 -translate-y-1/2 bg-white/[0.03] blur-3xl opacity-20 pointer-events-none"></div>
-
     </section>
   );
 };

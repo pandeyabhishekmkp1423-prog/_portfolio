@@ -32,7 +32,7 @@ const ContactPage: React.FC = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          access_key: "344c1e3c-b22e-4a44-ad15-300569c94157",
+          access_key: "3854a737-8445-4607-a6de-8ae583f94617",
 
           subject: `New Collaboration Inquiry from ${form.name}`,
 
@@ -188,30 +188,12 @@ ${form.details}
       {/* CONTACT INFO */}
       <div className="max-w-4xl mx-auto mt-14 text-center space-y-4">
         <div className="flex justify-center gap-10 flex-wrap text-white/60 text-sm">
-          <a
-            href="tel:+918874444249"
-            className="flex items-center gap-2 hover:text-white transition"
-          >
-            <Phone size={16} />
-            +91 8874444249
-          </a>
-
-          <a
-            href="https://wa.me/918874444249"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 hover:text-white transition"
-          >
-            <MessageCircle size={16} />
-            WhatsApp Direct
-          </a>
-
-          <a
+        <a
             href="mailto:pandeyabhishekmkp1423@gmail.com"
             className="flex items-center gap-2 hover:text-white transition"
           >
             <Mail size={16} />
-            pandeyabhishekmkp1423@gmail.com
+            pandeyswapnil426@gmail.com
           </a>
         </div>
       </div>
