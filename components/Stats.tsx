@@ -100,7 +100,7 @@ const Stats: React.FC = () => {
               desc: "Consistently outperforming industry averages with meaningful interaction depth."
             },
             {
-              number: "200K+",
+              number: "500K+",
               label: "Avg Reel Views",
               desc: "High-performing short-form content driving visibility and recall."
             },
