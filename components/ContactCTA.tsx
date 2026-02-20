@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Send, Phone, MessageCircle, Mail } from "lucide-react";
+import { Send, Mail } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ContactPage: React.FC = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
+    whatsapp: "",
     brand: "",
     budget: "",
     details: "",
@@ -22,6 +24,12 @@ const ContactPage: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (form.phone.length < 10) {
+      alert("Please enter a valid phone number.");
+      return;
+    }
+
     setLoading(true);
     setStatus(null);
 
@@ -41,6 +49,8 @@ const ContactPage: React.FC = () => {
 
           name: form.name,
           email: form.email,
+          phone: form.phone,
+          whatsapp: form.whatsapp,
           brand: form.brand,
           budget: form.budget,
           details: form.details,
@@ -48,6 +58,8 @@ const ContactPage: React.FC = () => {
           message: `
 Full Name: ${form.name}
 Email: ${form.email}
+Phone: ${form.phone}
+WhatsApp: ${form.whatsapp}
 Brand / Company: ${form.brand}
 Estimated Budget: ${form.budget}
 
@@ -64,12 +76,13 @@ ${form.details}
         setForm({
           name: "",
           email: "",
+          phone: "",
+          whatsapp: "",
           brand: "",
           budget: "",
           details: "",
         });
       } else {
-        console.log(result);
         setStatus("error");
       }
     } catch (error) {
@@ -82,19 +95,16 @@ ${form.details}
 
   return (
     <section id="contact" className="relative py-32 px-6">
-      {/* HEADING */}
       <div className="max-w-4xl mx-auto text-center mb-20">
         <h2 className="text-5xl md:text-6xl font-bold tracking-tight mb-6">
           Let’s Build Something Powerful
         </h2>
 
         <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
-          Open for brand collaborations, strategic partnerships and
-          performance-driven campaigns. Share your vision below.
+          Open for brand collaborations, partnerships and performance-driven campaigns.
         </p>
       </div>
 
-      {/* FORM CONTAINER */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -105,62 +115,83 @@ ${form.details}
           onSubmit={handleSubmit}
           className="rounded-3xl border border-white/10 bg-white/[0.04] backdrop-blur-2xl shadow-[0_30px_80px_rgba(0,0,0,0.4)] p-10 md:p-14 space-y-8"
         >
-          {/* ROW 1 */}
+          {/* Row 1 */}
           <div className="grid md:grid-cols-2 gap-6">
             <input
               type="text"
               name="name"
-              placeholder="Full Name"
+              placeholder="Full Name *"
               required
               value={form.name}
               onChange={handleChange}
-              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+              className="input"
             />
 
             <input
               type="email"
               name="email"
-              placeholder="Email Address"
+              placeholder="Email Address *"
               required
               value={form.email}
               onChange={handleChange}
-              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+              className="input"
             />
           </div>
 
-          {/* ROW 2 */}
+          {/* Row 2 */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Phone Number *"
+              required
+              value={form.phone}
+              onChange={handleChange}
+              className="input"
+            />
+
+            <input
+              type="tel"
+              name="whatsapp"
+              placeholder="WhatsApp Number (Optional)"
+              value={form.whatsapp}
+              onChange={handleChange}
+              className="input"
+            />
+          </div>
+
+          {/* Row 3 */}
           <div className="grid md:grid-cols-2 gap-6">
             <input
               type="text"
               name="brand"
-              placeholder="Brand / Company"
+              placeholder="Brand / Company *"
+              required
               value={form.brand}
               onChange={handleChange}
-              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+              className="input"
             />
 
             <input
               type="text"
               name="budget"
-              placeholder="Estimated Budget (Optional)"
+              placeholder="Estimated Budget"
               value={form.budget}
               onChange={handleChange}
-              className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition"
+              className="input"
             />
           </div>
 
-          {/* DETAILS */}
           <textarea
             name="details"
-            placeholder="Campaign Details"
+            placeholder="Campaign Details *"
             rows={6}
             required
             value={form.details}
             onChange={handleChange}
-            className="w-full rounded-xl bg-white/[0.06] border border-white/10 px-6 py-4 text-white placeholder-white/40 focus:outline-none focus:border-white/40 transition resize-none"
+            className="input resize-none"
           />
 
-          {/* STATUS */}
           {status === "success" && (
             <div className="text-green-400 text-center font-medium">
               ✅ Inquiry sent successfully.
@@ -173,11 +204,10 @@ ${form.details}
             </div>
           )}
 
-          {/* SUBMIT BUTTON */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 rounded-xl bg-white text-black font-semibold text-lg flex items-center justify-center gap-3 transition disabled:opacity-60"
+            className="w-full py-4 rounded-xl bg-white text-black font-semibold text-lg flex items-center justify-center gap-3 transition disabled:opacity-60 hover:scale-[1.02]"
           >
             <Send size={20} />
             {loading ? "Sending..." : "Submit Collaboration Inquiry"}
@@ -185,18 +215,34 @@ ${form.details}
         </form>
       </motion.div>
 
-      {/* CONTACT INFO */}
-      <div className="max-w-4xl mx-auto mt-14 text-center space-y-4">
-        <div className="flex justify-center gap-10 flex-wrap text-white/60 text-sm">
-        <a
-            href="mailto:pandeyabhishekmkp1423@gmail.com"
-            className="flex items-center gap-2 hover:text-white transition"
-          >
-            <Mail size={16} />
-            pandeyswapnil426@gmail.com
-          </a>
+      {/* Direct Email Only */}
+      <div className="max-w-4xl mx-auto mt-14 text-center space-y-4 text-white/60 text-sm">
+        <div className="flex justify-center items-center gap-3">
+          <Mail size={16} />
+          pandeyswapnil426@gmail.com
         </div>
       </div>
+
+      <style>
+        {`
+          .input {
+            width: 100%;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 16px 20px;
+            color: white;
+            transition: all 0.3s ease;
+          }
+          .input::placeholder {
+            color: rgba(255,255,255,0.4);
+          }
+          .input:focus {
+            outline: none;
+            border-color: rgba(255,255,255,0.4);
+          }
+        `}
+      </style>
     </section>
   );
 };
